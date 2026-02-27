@@ -29,7 +29,6 @@
     position: relative;
   }
 
-  /* ── FILM GRAIN OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
@@ -42,7 +41,6 @@
     animation: grainShift 0.5s steps(4) infinite;
   }
 
-  /* subtle grain animation */
   @keyframes grainShift {
     0% { transform: translate(0, 0); }
     25% { transform: translate(-2px, 1px); }
@@ -51,7 +49,6 @@
     100% { transform: translate(0, 0); }
   }
 
-  /* vignette */
   body::after {
     content: '';
     position: fixed;
@@ -66,7 +63,6 @@
     color: var(--paper);
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -111,7 +107,6 @@
     color: var(--ink);
   }
 
-  /* ── HERO ── */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -184,7 +179,6 @@
     color: var(--faded);
   }
 
-  /* ── EPIGRAPH STRIP ── */
   .epigraph-strip {
     padding: 2.5rem 3rem;
     border-top: 1px solid var(--paper-dark);
@@ -216,7 +210,6 @@
     display: block;
   }
 
-  /* ── ARTICLE ── */
   .article {
     max-width: 620px;
     margin: 0 auto;
@@ -231,7 +224,6 @@
     margin-top: 2rem;
   }
 
-  /* Section headers - like chapter titles in a printed book */
   .section-header {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
@@ -257,7 +249,6 @@
     letter-spacing: -0.005em;
   }
 
-  /* Body paragraphs */
   .article p {
     font-family: 'EB Garamond', serif;
     font-size: 1.12rem;
@@ -284,7 +275,6 @@
     font-weight: 700;
   }
 
-  /* Drop cap on first section */
   .drop-cap::first-letter {
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
@@ -296,7 +286,6 @@
     color: var(--ink);
   }
 
-  /* ── PULL QUOTES ── */
   .pull-quote {
     margin: 3rem -2rem;
     padding: 2rem 2rem;
@@ -326,7 +315,6 @@
     border-left: 2px solid var(--paper-dark);
   }
 
-  /* ── FULL-WIDTH BREAK (the slaughterhouse moment) ── */
   .full-break {
     margin: 4rem calc(-50vw + 50%);
     padding: 5rem 3rem;
@@ -337,7 +325,6 @@
     overflow: hidden;
   }
 
-  /* scratchy film edge effect */
   .full-break::before,
   .full-break::after {
     content: '';
@@ -376,7 +363,6 @@
     color: var(--faded);
   }
 
-  /* ── SECTION SEPARATOR ── */
   .sep {
     text-align: center;
     margin: 3.5rem 0;
@@ -386,7 +372,6 @@
     letter-spacing: 0.5em;
   }
 
-  /* ── THE ARC (film-strip feel) ── */
   .arc-sequence {
     margin: 2rem 0;
   }
@@ -424,7 +409,6 @@
     margin-bottom: 0;
   }
 
-  /* ── CLOSING ── */
   .closing {
     margin-top: 4rem;
     text-align: center;
@@ -441,7 +425,6 @@
     margin: 0 auto;
   }
 
-  /* ── NEXT ── */
   .next-page {
     margin-top: 4rem;
     padding: 2rem 0;
@@ -481,7 +464,6 @@
 
   .next-page:hover .next-arrow { transform: translateX(6px); }
 
-  /* ── COLOPHON ── */
   .colophon {
     margin-top: 4rem;
     padding-top: 1.5rem;
@@ -516,7 +498,6 @@
 
   .colophon-right a:hover { color: var(--ink); }
 
-  /* ── SIDE TOC ── */
   .toc {
     position: fixed;
     left: 2.5rem;
@@ -546,7 +527,6 @@
     color: var(--ink);
   }
 
-  /* ── SCROLL REVEAL ── */
   .reveal {
     opacity: 0;
     transform: translateY(15px);
@@ -558,7 +538,6 @@
     transform: translateY(0);
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes revealSlow {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -574,7 +553,6 @@
     to { opacity: 1; width: 50px; }
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 1100px) {
     .toc { display: none; }
   }
@@ -611,8 +589,7 @@
   <a href="#the-core-claim">The Core Claim</a>
   <a href="#the-disruptor">The Black Artist</a>
   <a href="#the-tragedy">The Tragedy</a>
-  <a href="#what-it-does">What It Does</a>
-  <a href="#making-good-use">Making Good Use</a>
+  <a href="#the-pivot">The Pivot</a>
   <a href="#design-mechanism">Design as Mechanism</a>
   <a href="#the-full-arc">The Full Arc</a>
 </div>
@@ -650,9 +627,7 @@
 
     <p class="no-indent"><strong>Literary</strong>: what we have read. The literature&mdash;novels, stories, songs, films&mdash;produced by communities that have been forced to understand systems in order to survive them. These are not texts assigned for appreciation. They are records of encounter. Every novel from a marginalized community is a full render of how designed systems press against human life, and how human life presses back.</p>
 
-    <p class="no-indent"><strong>Science</strong>: how we investigate what we have read in the world. Not science as neutrality or objectivity, but science in its original and deepest sense&mdash;collective investigation for the betterment of the whole. The inquiry exists because a community needs answers, not because an individual needs a credential.</p>
-
-    <p>The projects that emerge from this practice are the offspring. The author is their spiritual parent. The community is the ground in which they grow.</p>
+    <p class="no-indent"><strong>Science</strong>: how we investigate what we have read in the world. Not science as neutrality or objectivity, but science in its original sense&mdash;collective investigation for the betterment of the whole. The inquiry exists because a community needs answers, not because an individual needs a credential.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
@@ -666,15 +641,9 @@
 
     <p class="no-indent">Systems are designed. Their most powerful feature is invisibility.</p>
 
-    <p>The housing policy that redlined a neighborhood, the insurance model that calculated which bodies were worth covering, the school funding formula that tied resources to property taxes, the zoning decision that placed the waste facility next to the public housing&mdash;none of these announce themselves. They operate beneath the surface of daily life. By the time their effects are felt&mdash;in shortened lifespans, in constrained options, in the quiet narrowing of what a person believes is possible for themselves&mdash;the design has become so embedded that it feels like nature. Like the way things are. Like the way things have always been.</p>
+    <p>The housing policy that redlined a neighborhood, the insurance model that calculated which bodies were worth covering, the school funding formula that tied resources to property taxes, the zoning decision that placed the waste facility next to the public housing&mdash;none of these announce themselves. By the time their effects are felt&mdash;in shortened lifespans, in constrained options, in the quiet narrowing of what a person believes is possible&mdash;the design has become so embedded that it feels like nature. Like the way things are. Like the way things have always been.</p>
 
-    <p>This is the deepest work of system design: not just constraining what people can do, but shaping what they believe they can dream. The threads of these systems do not stop at material outcomes. They weave themselves into the fabric of aspiration, into the boundaries of imagination, into the very architecture of what feels realistic. A young person growing up inside a designed system does not simply face external barriers. They internalize a sense of ceiling that was engineered into the environment and mistake it for their own.</p>
-
-    <div class="pull-quote">
-      <p>This everyday reckoning with systems&mdash;this constant, largely unconscious dance with forces that were designed by someone, somewhere, for reasons that were never explained&mdash;is wholly invisible in daily life.</p>
-    </div>
-
-    <p class="no-indent">There is no moment in the ordinary course of things where the design announces itself, where the threads become visible, where a person can look at the architecture of their constraints and say: someone built this.</p>
+    <p>There is no moment in the ordinary course of things where a person can look at the architecture of their constraints and say: <em>someone built this.</em></p>
 
     <p>Literature makes it visible. Music makes it audible. Film makes it plain.</p>
   </section>
@@ -685,16 +654,20 @@
   <section class="article-section reveal" id="the-disruptor">
     <div class="section-header">
       <span class="section-num">Section III</span>
-      <h2 class="section-title">The Black Artist as Disruptor</h2>
+      <h2 class="section-title">The Black Artist and the Good Use</h2>
     </div>
 
-    <p class="no-indent">Black literature, Black music, and Black film have always functioned as technologies of disruption. They are not, and have never been, merely artistic expression. They are acts of rendering&mdash;making visible the architecture of systems that were designed to remain unseen.</p>
+    <p class="no-indent">Black literature, Black music, and Black film have always functioned as technologies of disruption. They are acts of rendering&mdash;making visible the architecture of systems that were designed to remain unseen.</p>
 
-    <p>This literature holds two things simultaneously: the brutal legacy of systemic failures and the homegrown innovation that attempts to dismantle them. It is literature of diagnosis and treatment&mdash;written by people who had no choice but to develop both.</p>
+    <p>When a novelist traces the interior life of a character navigating housing instability, they are not simply telling a story. They are performing an X-ray&mdash;showing the reader the visible gears of eviction and displacement, and the invisible ones: the ones that get into a person&rsquo;s sleep, that whisper what is realistic, that quietly redraw the borders of the possible. The novelist renders what no policy report can capture: how a system feels from inside, how it reproduces itself through the very people it constrains.</p>
 
-    <p>When a novelist traces the interior life of a character navigating housing instability, they are not simply telling a story. They are performing an X-ray. They are showing the reader the full machine: the visible gears of eviction and displacement, and the invisible ones&mdash;the ones that get into a person&rsquo;s sleep, that whisper what is realistic, that quietly redraw the borders of the possible. The novelist renders what no policy report can capture: how a system feels from inside, how it operates on consciousness, how it reproduces itself through the very people it constrains.</p>
+    <p>&ldquo;Making good use&rdquo; is an intentional phrase. Literary Science does not study these authors. It uses them&mdash;in the deepest and most respectful sense of that word. In school, students serve the text: they answer questions about it, prove they understood it, perform their reading for a grade. In Literary Science, the text serves the community. The author gave us a full render of the machine. Now we use it. We overlay the rendering onto community data. We trace the threads into our own neighborhoods. And we build interventions rooted in what the author also showed us: the ways communities sustain themselves, build networks, and resist from within.</p>
 
-    <p>This is a tradition as old as Black storytelling itself. From the spirituals that encoded escape routes in song, to the novels that anatomized the machinery of Jim Crow, to the films and albums that make the listener feel the weight of systems they have been taught not to see&mdash;Black artists have always been swinging an ax at the invisible threads. The stories do not merely describe the world. They make the world plain. They show us what was engineered to be hidden.</p>
+    <div class="pull-quote">
+      <p>The gaze is pointed not at the author as an object of study, but at the author as a guide&mdash;someone who has already seen the machine and left a rendering so detailed that others can use it to intervene.</p>
+    </div>
+
+    <p class="no-indent">From the spirituals that encoded escape routes in song, to the novels that anatomized the machinery of Jim Crow, to the films that make the viewer feel the weight of systems they have been taught not to see&mdash;Black artists have always been swinging an ax at the invisible threads. Literary Science restores them to this role: not the subject of a lesson plan, but the disruptor whose work is still operational.</p>
   </section>
 
   <!-- KAFKA BREAK -->
@@ -704,7 +677,7 @@
   </div>
 
   <section class="article-section reveal">
-    <p class="no-indent">Kafka was arguing that literature should shatter the ice of complacency inside the individual reader. Black literature does something more. It swings the ax not just at the frozen sea inside the reader, but at the frozen sea of <em>system invisibility</em>&mdash;the thick ice of designed structures that have been made to look like nature. And Literary Science takes what the ax cracks open and builds something in the world with it. Kafka&rsquo;s ax frees the reader. This ax frees the community.</p>
+    <p class="no-indent">Kafka wanted literature to shatter the ice of complacency inside the individual reader. Black literature does something more. It swings the ax at the frozen sea of <em>system invisibility</em>&mdash;the thick ice of designed structures that have been made to look like nature. Literary Science takes what the ax cracks open and builds something in the world with it. Kafka&rsquo;s ax frees the reader. This ax frees the community.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
@@ -718,77 +691,57 @@
 
     <p class="no-indent">Traditional education has taken the ax and turned it into homework.</p>
 
-    <p>The very technology that was built to disrupt&mdash;to hack at the invisible threads of system design&mdash;has been reduced to comprehension questions, theme identification, and rubric-graded essays. The artist who rendered the full architecture of a failing system becomes &ldquo;the author&rdquo; of an assigned text. The student who might have recognized themselves in a tradition of people who see through systems instead learns to perform analysis for a grade.</p>
+    <p>The technology that was built to disrupt has been reduced to comprehension questions, theme identification, and rubric-graded essays. The artist who rendered the full architecture of a failing system becomes &ldquo;the author&rdquo; of an assigned text. The student who might have recognized themselves in a tradition of people who see through systems instead learns to perform analysis for a grade.</p>
 
-    <p>This is not a failure of intention. Many English teachers love the books they teach and believe deeply in the power of literature. But the institutional frame&mdash;the syllabus, the test, the grade, the transcript&mdash;strips the text of its operational power. A novel that was written to make a system visible becomes a novel that is read to demonstrate reading proficiency. The relationship between student and text is inverted: instead of the text serving the community, the student serves the text.</p>
+    <p>This is not a failure of intention. Many English teachers love the books they teach and believe deeply in the power of literature. But the institutional frame&mdash;the syllabus, the test, the grade, the transcript&mdash;strips the text of its operational power. Instead of the text serving the community, the student serves the text.</p>
 
     <div class="pull-quote">
-      <p>Literary Science reverses this. It says: we are reading this novel because this writer saw the machine. They rendered it in full. And our job is to learn to see what the writer saw, to overlay it onto our community&rsquo;s reality, and to build something that interrupts the design.</p>
+      <p>Literary Science reverses this. We read this novel because the writer saw the machine. They rendered it in full. Our job is to see what the writer saw, overlay it onto our community&rsquo;s reality, and build something that interrupts the design.</p>
     </div>
 
-    <p class="no-indent">This is not disrespect to the text. It is the highest honor. It says the author&rsquo;s work is operational. It does something. It is not a museum piece. It is a tool that is still sharp.</p>
+    <p class="no-indent">This is not disrespect to the text. It is the highest honor. It says the author&rsquo;s work is not a museum piece. It is a tool that is still sharp.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
 
-  <!-- ── 05: WHAT IT DOES ── -->
-  <section class="article-section reveal" id="what-it-does">
+  <!-- ── 05: THE PIVOT ── -->
+  <section class="article-section reveal" id="the-pivot">
     <div class="section-header">
       <span class="section-num">Section V</span>
-      <h2 class="section-title">What Literary Science Actually Does</h2>
+      <h2 class="section-title">The Pivot</h2>
     </div>
 
-    <p class="no-indent">Literary Science treats novels from marginalized communities as <em>operational technology</em>&mdash;not stories to appreciate, but systems to analyze. Students explore literature through the lens of asset distribution, environmental inputs, and human behavioral patterns. The animating questions are always: <em>What systems govern these lives? What breaks them? What sustains them?</em></p>
+    <p class="no-indent">The animating questions are always: <em>What systems govern these lives? What breaks them? What sustains them?</em></p>
 
-    <p>And then the pivot: What does this tell us about our own community? What are the threads that the novelist made visible that are also operating&mdash;invisibly&mdash;in the places where we live? And what could we build, rooted in our community&rsquo;s own assets, culture, and knowledge, that would make a difference?</p>
+    <p>And then the pivot: What does this tell us about our own community? What are the threads the novelist made visible that are also operating&mdash;invisibly&mdash;where we live? And what could we build, rooted in our community&rsquo;s own assets, that would make a difference?</p>
 
-    <p>This pivot is what distinguishes Literary Science from literary analysis, from critical pedagogy, and from traditional emergent curriculum. Literary analysis stops at interpretation. Critical pedagogy stops at consciousness-raising. Emergent curriculum follows individual curiosity. Literary Science moves from the novelist&rsquo;s rendering of the machine, through the data that confirms the machine is operating locally, to a hypothesis about how to intervene&mdash;and then to action that interrupts the design.</p>
-
-    <p>The novel is the X-ray. The Fellow is the diagnostician. The project is the intervention. The author is the spiritual parent of work they may never see but that exists because they made the invisible plain.</p>
+    <p>Literary analysis stops at interpretation. Critical pedagogy stops at consciousness-raising. Emergent curriculum follows individual curiosity. Literary Science moves from rendering to data to hypothesis to action.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
 
-  <!-- ── 06: MAKING GOOD USE ── -->
-  <section class="article-section reveal" id="making-good-use">
-    <div class="section-header">
-      <span class="section-num">Section VI</span>
-      <h2 class="section-title">Making Good Use</h2>
-    </div>
-
-    <p class="no-indent">&ldquo;Making good use&rdquo; is an intentional phrase. Literary Science does not study Black authors. It uses them&mdash;in the deepest and most respectful sense of that word.</p>
-
-    <p>In school, students serve the text. They answer questions about it. They prove they understood it. They perform their reading for a grade. The text is the authority, and the student&rsquo;s job is to demonstrate deference to it.</p>
-
-    <p>In Literary Science, the text serves the community. The author gave us a full render of the machine. Now we use it. We overlay the novelist&rsquo;s rendering onto community data. We trace the threads the author made visible into our own neighborhoods. We develop hypotheses about how the systems the author described are operating in the places where we live. And we build interventions rooted in what the author also showed us: the ways communities sustain themselves, build networks, and resist from within.</p>
-
-    <p>This restores the Black artist to their historical role: not as the subject of a lesson plan, but as the disruptor, the teller of tales that makes the world plain. The gaze of our students is pointed not at the author as an object of study, but at the author as a guide&mdash;someone who has already seen the machine and left a rendering so detailed that others can use it to navigate, and ultimately to intervene.</p>
-  </section>
-
-  <div class="sep">&middot; &middot; &middot;</div>
-
-  <!-- ── 07: DESIGN AS MECHANISM ── -->
+  <!-- ── 06: DESIGN AS MECHANISM ── -->
   <section class="article-section reveal" id="design-mechanism">
     <div class="section-header">
-      <span class="section-num">Section VII</span>
+      <span class="section-num">Section VI</span>
       <h2 class="section-title">Design as Mechanism</h2>
     </div>
 
-    <p class="no-indent">The Nieuwe Instituut, in its program <em>The Museum as a Testing Ground</em>, describes design as &ldquo;a mechanism for responding to, and sometimes exacerbating, the cycles of backlash, pushback, and spiraling feedback loops that have more and more pushed our worlds to extremes&mdash;from extreme weather to extreme inequality and polarization.&rdquo;</p>
+    <p class="no-indent">The Nieuwe Instituut describes design as &ldquo;a mechanism for responding to, and sometimes exacerbating, the cycles of backlash, pushback, and spiraling feedback loops that have more and more pushed our worlds to extremes&mdash;from extreme weather to extreme inequality and polarization.&rdquo;</p>
 
-    <p>Literary Science operates inside this frame. The systems that Black literature renders&mdash;redlining, disinvestment, educational sorting, carceral expansion&mdash;are all design. They were designed by someone, for purposes that served someone, and they produce spiraling feedback loops that compound over generations. The inequality is not an accident. It is a design outcome.</p>
+    <p>The systems that Black literature renders&mdash;redlining, disinvestment, educational sorting, carceral expansion&mdash;are all design. They were designed by someone, for purposes that served someone, and they produce feedback loops that compound over generations. The inequality is not an accident. It is a design outcome.</p>
 
-    <p>But if design can exacerbate, it can also respond. Literary Science is a design methodology that begins with the fullest available rendering of the problem&mdash;the novel&mdash;and moves toward responses that interrupt the feedback loops rather than reinforce them. Wherever it is practiced&mdash;in a classroom, a community organization, a policy shop, a museum, a graduate seminar&mdash;the discipline is the same: use the author&rsquo;s X-ray to see the machine, overlay it onto the world as it actually operates, and build something that breaks the cycle.</p>
+    <p>But if design can exacerbate, it can also respond. Literary Science begins with the fullest available rendering of the problem&mdash;the novel&mdash;and moves toward responses that interrupt the feedback loops rather than reinforce them. Wherever it is practiced&mdash;in a classroom, a community organization, a policy shop, a museum, a graduate seminar&mdash;the discipline is the same: see the machine, overlay it onto the world as it actually operates, and build something that breaks the cycle.</p>
 
     <p>At NewComm&mdash;The New Community Project, where Literary Science was born&mdash;this takes a specific form: student-led Companies with real budgets prototyping interventions in their own communities. But NewComm is one expression of the methodology, not the boundary of it. Literary Science is the seeing. What you build with what you see depends on where you stand.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
 
-  <!-- ── 08: THE FULL ARC ── -->
+  <!-- ── 07: THE FULL ARC ── -->
   <section class="article-section reveal" id="the-full-arc">
     <div class="section-header">
-      <span class="section-num">Section VIII</span>
+      <span class="section-num">Section VII</span>
       <h2 class="section-title">The Full Arc</h2>
     </div>
 
@@ -797,15 +750,15 @@
         <div class="arc-marker">I.</div>
         <div class="arc-content">
           <span class="arc-label">The Novelist</span>
-          <p class="no-indent">A Black novelist writes a book. In it, they render the full architecture of a system&mdash;how it distributes assets, how it shapes environments, how it presses against human behavior, how it gets into dreams and tells people what is realistic. The novel makes the invisible visible.</p>
+          <p class="no-indent">An author renders the full architecture of a system&mdash;how it distributes assets, how it shapes environments, how it presses against human behavior, how it gets into dreams and tells people what is realistic.</p>
         </div>
       </div>
 
       <div class="arc-step">
         <div class="arc-marker">II.</div>
         <div class="arc-content">
-          <span class="arc-label">The Fellow</span>
-          <p class="no-indent">A Fellow reads the book. Not as homework. Not as literature to appreciate. As an X-ray of a machine that is also operating in their community. They learn to see the threads the author made visible.</p>
+          <span class="arc-label">The Reader</span>
+          <p class="no-indent">A practitioner reads the book as an X-ray of a machine that is also operating in their community.</p>
         </div>
       </div>
 
@@ -813,7 +766,7 @@
         <div class="arc-marker">III.</div>
         <div class="arc-content">
           <span class="arc-label">The Data</span>
-          <p class="no-indent">In Math, the Fellow overlays the novel&rsquo;s rendering onto community data. The numbers confirm, complicate, or extend what the author showed. The machine becomes measurable.</p>
+          <p class="no-indent">The rendering is overlaid onto community data. The numbers confirm, complicate, or extend what the author showed. The machine becomes measurable.</p>
         </div>
       </div>
 
@@ -821,7 +774,7 @@
         <div class="arc-marker">IV.</div>
         <div class="arc-content">
           <span class="arc-label">The Language</span>
-          <p class="no-indent">In English, the Fellow develops the capacity to articulate what they see&mdash;to frame the system in language precise enough that a room full of adults will take it seriously.</p>
+          <p class="no-indent">The practitioner articulates what they see in language precise enough that a room of decision-makers will take it seriously.</p>
         </div>
       </div>
 
@@ -829,7 +782,7 @@
         <div class="arc-marker">V.</div>
         <div class="arc-content">
           <span class="arc-label">The Synthesis</span>
-          <p class="no-indent">In Literary Science, the Fellow synthesizes. They draw a line from the novelist&rsquo;s rendering of the system, through the data that confirms it is operating locally, to a hypothesis about what intervention&mdash;rooted in community assets, culture, and knowledge&mdash;could interrupt the design.</p>
+          <p class="no-indent">A hypothesis: from the rendering of the system, through the data that confirms it locally, to an intervention rooted in community assets that could interrupt the design.</p>
         </div>
       </div>
 
@@ -837,7 +790,7 @@
         <div class="arc-marker">VI.</div>
         <div class="arc-content">
           <span class="arc-label">The Test</span>
-          <p class="no-indent">The hypothesis is stress-tested at Fellow Forum. It survives scrutiny from parents, stakeholders, clients, and professionals. The Fellow enters the school year with a claim worth testing.</p>
+          <p class="no-indent">The hypothesis survives scrutiny from the people closest to the problem and the people with the power to act on it.</p>
         </div>
       </div>
 
@@ -845,7 +798,7 @@
         <div class="arc-marker">VII.</div>
         <div class="arc-content">
           <span class="arc-label">The Response</span>
-          <p class="no-indent">The hypothesis meets the world. In whatever form the practice takes&mdash;a community project, a policy proposal, a curriculum redesign, an institutional intervention&mdash;what was rendered visible by the author, confirmed by the data, and articulated with precision becomes action that interrupts the design.</p>
+          <p class="no-indent">The hypothesis meets the world. What was rendered visible, confirmed by data, and articulated with precision becomes action that interrupts the design.</p>
         </div>
       </div>
     </div>
@@ -853,20 +806,20 @@
 
   <!-- CLOSING -->
   <div class="closing reveal">
-    <p class="closing-text">The projects are the baby. The author is their spiritual parent. The community is the ground in which they grow.</p>
+    <p class="closing-text">The projects are the offspring. The author is their spiritual parent. The community is the ground in which they grow.</p>
   </div>
 
   <!-- FINAL BREAK -->
   <div class="full-break" style="margin-top: 4rem;">
-    <p class="break-text">Literary Science is the discipline of taking what Black artists have always done&mdash;making the designed world plain&mdash;and using what they rendered to interrupt the cycles of backlash, inequity, and extraction that designed systems reproduce.</p>
+    <p class="break-text">Literary Science is the discipline of taking what artists from marginalized communities have always done&mdash;making the designed world plain&mdash;and using what they rendered to interrupt the cycles that designed systems reproduce.</p>
     <p class="break-attr">The Epistemology of Literary Science</p>
   </div>
 
   <!-- NEXT -->
-  <a href="#" class="next-page">
+  <a href="/studio/" class="next-page">
     <div>
       <div class="next-label">Continue Reading</div>
-      <div class="next-title">Musings</div>
+      <div class="next-title">The Studio</div>
     </div>
     <div class="next-arrow">&rarr;</div>
   </a>
@@ -880,32 +833,3 @@
       &copy; 2026
     </div>
   </div>
-
-</article>
-
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Active TOC tracking
-  const tocLinks = document.querySelectorAll('.toc a');
-  const sections = document.querySelectorAll('.article-section[id]');
-  const tocObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tocLinks.forEach(link => link.classList.remove('active'));
-        const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-25% 0px -65% 0px' });
-  sections.forEach(s => tocObserver.observe(s));
-</script>
-
-</body>
-</html>
