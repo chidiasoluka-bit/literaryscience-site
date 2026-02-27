@@ -89,7 +89,7 @@
   }
   .marquee-track {
     display: flex; width: max-content;
-    animation: scroll 30s linear infinite;
+    animation: scroll 60s linear infinite;
   }
   .marquee-item {
     font-family: 'EB Garamond', serif;
@@ -218,7 +218,7 @@
     .zone-full:hover .zone-full-right { border-top-color: rgba(242,242,242,0.1); }
   }
 </style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script></head>
+</head>
 <body>
 
 <nav>
@@ -242,16 +242,15 @@
 
 <div class="marquee">
   <div class="marquee-track">
-    <span class="marquee-item">The novel is the X-ray</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The Fellow is the diagnostician</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The project is the intervention</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The author is the spiritual parent</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The community is the ground in which it grows</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The novel is the X-ray</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The Fellow is the diagnostician</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The project is the intervention</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The author is the spiritual parent</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">The community is the ground in which it grows</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;Not everything that is faced can be changed, but nothing can be changed until it is faced.&rdquo; &mdash; James Baldwin</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;All that you touch you change. All that you change changes you.&rdquo; &mdash; Octavia Butler</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;If there&rsquo;s a book you want to read, but it hasn&rsquo;t been written yet, then you must write it.&rdquo; &mdash; Toni Morrison</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;Stories matter. Many stories matter.&rdquo; &mdash; Chimamanda Ngozi Adichie</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;What is most important to me must be spoken, made verbal and shared.&rdquo; &mdash; Audre Lorde</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;To be truly visionary we have to root our imagination in our concrete reality while simultaneously imagining possibilities beyond that reality.&rdquo; &mdash; bell hooks</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;Not everything that is faced can be changed, but nothing can be changed until it is faced.&rdquo; &mdash; James Baldwin</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;All that you touch you change. All that you change changes you.&rdquo; &mdash; Octavia Butler</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">&ldquo;If there&rsquo;s a book you want to read, but it hasn&rsquo;t been written yet, then you must write it.&rdquo; &mdash; Toni Morrison</span><span class="marquee-dot">&bull;</span>
   </div>
 </div>
 
@@ -329,5 +328,5 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",u=>{if(!u){window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}</script></body>
+</body>
 </html>
