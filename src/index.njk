@@ -218,7 +218,7 @@
     .zone-full:hover .zone-full-right { border-top-color: rgba(242,242,242,0.1); }
   }
 </style>
-</head>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script></head>
 <body>
 
 <nav>
@@ -329,5 +329,5 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-</body>
+<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",u=>{if(!u){window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}</script></body>
 </html>
