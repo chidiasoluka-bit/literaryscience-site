@@ -591,6 +591,7 @@
   <a href="#the-tragedy">The Tragedy</a>
   <a href="#the-pivot">The Pivot</a>
   <a href="#design-mechanism">Design as Mechanism</a>
+  <a href="#the-space">The Space</a>
   <a href="#the-full-arc">The Full Arc</a>
 </div>
 
@@ -738,10 +739,36 @@
 
   <div class="sep">&middot; &middot; &middot;</div>
 
-  <!-- ── 07: THE FULL ARC ── -->
-  <section class="article-section reveal" id="the-full-arc">
+  <!-- ── 07: THE SPACE ── -->
+  <section class="article-section reveal" id="the-space">
     <div class="section-header">
       <span class="section-num">Section VII</span>
+      <h2 class="section-title">The Space</h2>
+    </div>
+
+    <p class="no-indent">There is a second text that Literary Science reads. It is not made of pages. It is made of walls, endowments, gates, and geography.</p>
+
+    <p>An independent school sits on a campus worth tens of millions of dollars, three blocks from a housing project. A museum holds a collection valued at more than the median wealth of the surrounding neighborhood combined. A library anchors a commercial corridor where half the storefronts are empty. These institutions have capital&mdash;financial, human, social, spatial. They have passionate professionals, deep networks, and physical infrastructure built for gathering, learning, and making. And in almost every case, the primary relationship between the institution and the historically marginalized community at its doorstep is service learning, volunteerism, or DEI programming&mdash;one-way streets that preserve the power dynamic they claim to address.</p>
+
+    <p>Literary Science reads these spaces the way it reads a novel. What systems are operating here? What is the design? Who benefits from the current architecture&mdash;the gate, the admissions process, the membership model, the programming calendar? What assets are inside that could be redistributed, shared, or activated for community good? And what would it look like to crack the space open&mdash;not for a conversation about equity, but for the actual work of collective investment, knowledge-making, and shared power?</p>
+
+    <div class="pull-quote">
+      <p>The question is not how the institution can serve the community. The question is what becomes possible when the institution and the community are no longer on opposite sides of the gate.</p>
+    </div>
+
+    <p class="no-indent">This is not a metaphor. It is the second discipline of Literary Science. The first discipline reads literature to render the invisible architecture of systems. The second discipline reads space&mdash;institutional space, community space, the charged geography between them&mdash;to render the invisible architecture of access, exclusion, and unrealized potential. Both moves follow the same logic: see the design, overlay it onto the world as it actually operates, and build something that interrupts the cycle.</p>
+
+    <p>But the space is not enough on its own. An opened gate without a methodology is just another partnership that doesn&rsquo;t go deep enough. What fills the reimagined space is the first discipline&mdash;literature as the technology for understanding systems, community data as the evidence, hypothesis as the bridge to action. The text activates the space. The space gives the text somewhere to land. Together they produce what neither can alone: a site where the people who have been studied become the people who study, where the institution that hoarded becomes the institution that invests, and where the work of understanding systems becomes the work of rebuilding them.</p>
+
+    <p>When Literary Science enters an institution, it is asking that institution to reimagine what it is for. Not to add a program. Not to diversify its audience. To transform its space into a site of collective dreaming, strategy, and investment&mdash;where the critical study of literature becomes the language spoken inside walls that were once closed, and where young people are not guests at someone else&rsquo;s table but architects of what the table is for.</p>
+  </section>
+
+  <div class="sep">&middot; &middot; &middot;</div>
+
+  <!-- ── 08: THE FULL ARC ── -->
+  <section class="article-section reveal" id="the-full-arc">
+    <div class="section-header">
+      <span class="section-num">Section VIII</span>
       <h2 class="section-title">The Full Arc</h2>
     </div>
 
@@ -833,32 +860,3 @@
       &copy; 2026
     </div>
   </div>
-
-</article>
-
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Active TOC tracking
-  const tocLinks = document.querySelectorAll('.toc a');
-  const sections = document.querySelectorAll('.article-section[id]');
-  const tocObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tocLinks.forEach(link => link.classList.remove('active'));
-        const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-25% 0px -65% 0px' });
-  sections.forEach(s => tocObserver.observe(s));
-</script>
-
-</body>
-</html>
