@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ title }}{% if title %} — {% endif %}Literary Science</title>
-<meta name="description" content="{{ description or 'A methodology that treats literature from marginalized communities as operational technology for understanding and intervening in the systems that shape our lives.' }}">
-<link rel="stylesheet" href="/css/style.css">
-{% block head %}{% endblock %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} — Literary Science</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-logo">Literary Science</a>
-  <ul class="nav-links">
-    <li><a href="/epistemology/"{% if nav == "work" %} class="active"{% endif %}>The Work</a></li>
-    <li><a href="/studio/"{% if nav == "studio" %} class="active"{% endif %}>Studio</a></li>
-    <li><a href="/toolkit/"{% if nav == "toolkit" %} class="active"{% endif %}>Toolkit</a></li>
-    <li><a href="/work/"{% if nav == "work-engage" %} class="active"{% endif %}>Engage</a></li>
-    <li><a href="/newcomm/"{% if nav == "newcomm" %} class="active"{% endif %}>NewComm</a></li>
-  </ul>
-</nav>
-
-{% block content %}{% endblock %}
-
-<footer>
-  <div class="footer-left">Literary Science</div>
-  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+  {{ content | safe }}
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
