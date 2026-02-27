@@ -137,7 +137,7 @@ title: The Toolkit
       <p class="tool-desc">{{ tool.templateContent | safe }}</p>
     </div>
     {% if tool.data.download_url %}
-    <a href="{{ tool.data.download_url }}" class="tool-dl" download>Download</a>
+    <a href="#" class="tool-dl" data-download="{{ tool.data.download_url }}" data-tool="{{ tool.data.title }}" onclick="openGate(this); return false;">Download</a>
     {% else %}
     <span class="tool-dl coming">Coming soon</span>
     {% endif %}
@@ -154,6 +154,161 @@ title: The Toolkit
   <div class="footer-left">Literary Science</div>
   <div class="footer-right">A property of Asoluka LLC &nbsp;—&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;—&nbsp; © 2026</div>
 </footer>
+
+<!-- Hidden Netlify form for bot detection -->
+<form name="toolkit-downloads" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="tool">
+</form>
+
+<!-- Email Gate Modal -->
+<div class="gate-overlay" id="gateOverlay" onclick="if(event.target===this)closeGate()">
+  <div class="gate-modal">
+    <button class="gate-close" onclick="closeGate()">&times;</button>
+    <div class="gate-label">Free Download</div>
+    <h2 class="gate-title" id="gateTitle">Tool Name</h2>
+    <p class="gate-desc">Enter your email to receive the download. We'll occasionally share new tools and updates — nothing else.</p>
+    <form id="gateForm" onsubmit="submitGate(event)">
+      <input type="text" name="name" id="gateName" placeholder="Your name" required class="gate-input">
+      <input type="email" name="email" id="gateEmail" placeholder="Email address" required class="gate-input">
+      <input type="hidden" name="tool" id="gateTool">
+      <input type="hidden" name="form-name" value="toolkit-downloads">
+      <input type="hidden" name="bot-field">
+      <button type="submit" class="gate-submit" id="gateSubmit">Get the download</button>
+    </form>
+    <div class="gate-success" id="gateSuccess" style="display:none;">
+      <p>You're in. Your download is ready.</p>
+      <a href="#" class="gate-download-btn" id="gateDownloadLink" download>Download now →</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gate-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(17,17,17,0.7); z-index: 10000;
+    display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(3px);
+  }
+  .gate-overlay.active { display: flex; }
+
+  .gate-modal {
+    background: var(--paper); padding: 3rem;
+    max-width: 420px; width: 90%; position: relative;
+    border: 1px solid var(--paper-dark);
+  }
+  .gate-close {
+    position: absolute; top: 1rem; right: 1.2rem;
+    background: none; border: none; font-size: 1.5rem;
+    cursor: pointer; color: var(--faded); line-height: 1;
+    transition: color 0.3s;
+  }
+  .gate-close:hover { color: var(--ink); }
+
+  .gate-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.45rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--faded); margin-bottom: 0.8rem;
+  }
+  .gate-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700; font-size: 1.3rem;
+    margin-bottom: 0.8rem; line-height: 1.3;
+  }
+  .gate-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem; line-height: 1.7;
+    color: var(--warm-gray); margin-bottom: 1.8rem;
+  }
+  .gate-input {
+    display: block; width: 100%;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; padding: 0.75rem 0;
+    border: none; border-bottom: 1px solid var(--paper-dark);
+    background: transparent; color: var(--ink);
+    outline: none; margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+  .gate-input:focus { border-color: var(--ink); }
+  .gate-input::placeholder { color: var(--faded); }
+
+  .gate-submit {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.55rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink); padding: 0.8rem 1.5rem;
+    cursor: pointer; margin-top: 0.5rem;
+    transition: all 0.3s; width: 100%;
+  }
+  .gate-submit:hover { background: transparent; color: var(--ink); }
+  .gate-submit:disabled { opacity: 0.5; cursor: wait; }
+
+  .gate-success { text-align: center; padding-top: 1rem; }
+  .gate-success p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem; color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  .gate-download-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.55rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; color: var(--ink);
+    border: 1px solid var(--ink); padding: 0.8rem 1.5rem;
+    display: inline-block; transition: all 0.3s;
+  }
+  .gate-download-btn:hover { background: var(--ink); color: var(--paper); }
+</style>
+
+<script>
+  let currentDownloadUrl = '';
+
+  function openGate(el) {
+    currentDownloadUrl = el.getAttribute('data-download');
+    const toolName = el.getAttribute('data-tool');
+    document.getElementById('gateTitle').textContent = toolName;
+    document.getElementById('gateTool').value = toolName;
+    document.getElementById('gateForm').style.display = 'block';
+    document.getElementById('gateSuccess').style.display = 'none';
+    document.getElementById('gateName').value = '';
+    document.getElementById('gateEmail').value = '';
+    document.getElementById('gateOverlay').classList.add('active');
+  }
+
+  function closeGate() {
+    document.getElementById('gateOverlay').classList.remove('active');
+  }
+
+  async function submitGate(e) {
+    e.preventDefault();
+    const btn = document.getElementById('gateSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const form = e.target;
+    const data = new URLSearchParams(new FormData(form));
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString()
+      });
+    } catch (err) {
+      // Still show download even if form submission fails
+    }
+
+    document.getElementById('gateForm').style.display = 'none';
+    document.getElementById('gateDownloadLink').href = currentDownloadUrl;
+    document.getElementById('gateSuccess').style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Get the download';
+  }
+</script>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
