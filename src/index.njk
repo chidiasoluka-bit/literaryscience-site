@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literary Science</title>
+<meta name="description" content="A methodology that treats literature from marginalized communities as operational technology for understanding and intervening in the systems that shape our lives.">
+<link rel="canonical" href="https://literaryscience.com">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: revealSlow 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
+  }
+
+  .hero-title .line-2 {
+    display: block;
+    opacity: 0;
+    animation: revealSlow 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+  }
+
+  .hero-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 0.8s forwards;
+  }
+
+  .hero-rule {
+    width: 50px; height: 1px;
+    background: var(--faded);
+    margin-top: 2rem;
+    opacity: 0;
+    animation: expandLine 1.2s ease 1.1s forwards;
+  }
+
+  .hero-description {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-top: 2rem;
+    color: var(--warm-gray);
+    opacity: 0;
+    animation: fadeIn 1.5s ease 1.3s forwards;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem; left: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper-dark);
+    writing-mode: vertical-rl;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 2s forwards;
+  }
+
+  /* marquee */
+  .marquee {
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--paper-dark);
+    border-bottom: 1px solid var(--paper-dark);
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+  .marquee-item {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.85rem; font-style: italic;
+    letter-spacing: 0.04em; white-space: nowrap;
+    padding: 0 2rem; color: var(--faded); opacity: 0.6;
+  }
+  .marquee-dot { padding: 0 0.5rem; color: var(--paper-dark); }
+
+  /* quote */
+  .home-quote {
+    padding: 4.5rem 3rem;
+    background: var(--ink);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .home-quote::before, .home-quote::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 20px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px);
+  }
+  .home-quote::before { left: 0; }
+  .home-quote::after { right: 0; }
+  .home-quote blockquote {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-style: italic; line-height: 1.6;
+    max-width: 640px; margin: 0 auto; color: var(--paper);
+  }
+  .home-quote cite {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.48rem; font-style: normal;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    display: block; margin-top: 1.5rem; color: var(--faded);
+  }
+
+  /* zone grid */
+  .zones {
+    display: grid; grid-template-columns: 1fr 1fr;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .zone {
+    padding: 4rem 3rem;
+    border-bottom: 1px solid var(--paper-dark);
+    border-right: 1px solid var(--paper-dark);
+    transition: background 0.5s;
+    text-decoration: none; color: var(--ink);
+    display: block;
+  }
+  .zone:nth-child(2n) { border-right: none; }
+  .zone:hover { background: var(--paper-light); }
+
+  .zone-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 4rem; font-weight: 700;
+    opacity: 0.04; line-height: 1; margin-bottom: 1.5rem;
+  }
+  .zone-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700; font-size: 1.5rem;
+    letter-spacing: -0.01em; margin-bottom: 0.5rem;
+  }
+  .zone-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.5rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faded); margin-bottom: 1.2rem;
+  }
+  .zone-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 420px;
+  }
+  .zone-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.55rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--paper-dark); margin-top: 1.5rem; display: block;
+    transition: color 0.3s;
+  }
+  .zone:hover .zone-arrow { color: var(--ink); }
+
+  /* full-width zone */
+  .zone-full {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-right: none;
+  }
+  .zone-full:hover { background: var(--ink); color: var(--paper); }
+  .zone-full:hover .zone-desc { color: var(--paper-dark); }
+  .zone-full:hover .zone-subtitle { color: var(--faded); }
+  .zone-full:hover .zone-arrow { color: var(--paper); }
+
+  .zone-full-left { padding-right: 2rem; }
+  .zone-full-right {
+    padding-left: 2rem;
+    border-left: 1px solid var(--paper-dark);
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .zone-full:hover .zone-full-right { border-left-color: rgba(242,242,242,0.1); }
+
+  .zone-stat { margin-bottom: 1.5rem; }
+  .stat-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.8rem; font-weight: 700; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.48rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--faded); margin-top: 0.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .zones { grid-template-columns: 1fr; }
+    .zone { border-right: none; padding: 3rem 1.5rem; }
+    .zone-full { grid-template-columns: 1fr; }
+    .zone-full-right {
+      border-left: none; padding-left: 0;
+      border-top: 1px solid var(--paper-dark);
+      padding-top: 2rem; margin-top: 2rem;
+    }
+    .zone-full:hover .zone-full-right { border-top-color: rgba(242,242,242,0.1); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">The Work</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/work/">Engage</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-title">Literary<span class="line-2">Science.</span></h1>
+  <div class="hero-sub">What we have read &mdash; How we investigate it in the world</div>
+  <div class="hero-rule"></div>
+  <p class="hero-description">A methodology that treats literature from marginalized communities as operational technology for understanding and intervening in the systems that shape our lives.</p>
+  <div class="hero-scroll">Scroll &darr;</div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">The novel is the X-ray</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The Fellow is the diagnostician</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The project is the intervention</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The author is the spiritual parent</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The community is the ground in which it grows</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The novel is the X-ray</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The Fellow is the diagnostician</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The project is the intervention</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The author is the spiritual parent</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">The community is the ground in which it grows</span><span class="marquee-dot">&bull;</span>
+  </div>
+</div>
+
+<div class="home-quote reveal">
+  <blockquote>&ldquo;We looked at design as a mechanism for responding to, and something exacerbating, the cycles of backlash, pushback, and spiraling feedback loops that have more and more pushed our worlds to extremes&mdash;from extreme weather to extreme inequality and polarization.&rdquo;</blockquote>
+  <cite>Aric Chen &mdash; Het Nieuwe Instituut</cite>
+</div>
+
+<div class="zones">
+  <a href="/epistemology/" class="zone reveal">
+    <div class="zone-num">01</div>
+    <div class="zone-title">The Work</div>
+    <div class="zone-subtitle">Epistemology &amp; Methodology</div>
+    <p class="zone-desc">The intellectual architecture. Why literature from marginalized communities functions as technology. The four movements that turn a novel into a response to a designed system. The permanent installation on the wall.</p>
+    <span class="zone-arrow">Read the epistemology &rarr;</span>
+  </a>
+
+  <a href="/studio/" class="zone reveal" style="transition-delay: 0.08s;">
+    <div class="zone-num">02</div>
+    <div class="zone-title">The Studio</div>
+    <div class="zone-subtitle">Musings, Drawings &amp; Asides</div>
+    <p class="zone-desc">The table covered in open books and sketches. Connections between Killer of Sheep and housing policy. A drawing pinned next to a paragraph from Toni Morrison. The thinking before it becomes formal.</p>
+    <span class="zone-arrow">Enter the studio &rarr;</span>
+  </a>
+
+  <a href="/toolkit/" class="zone reveal">
+    <div class="zone-num">03</div>
+    <div class="zone-title">The Toolkit</div>
+    <div class="zone-subtitle">Free Tools for Immediate Use</div>
+    <p class="zone-desc">The open shelf by the door. One-pagers, classroom protocols, hypothesis templates. Things a teacher downloads Friday and uses Monday morning. Generous. Alive. No gate.</p>
+    <span class="zone-arrow">Browse the tools &rarr;</span>
+  </a>
+
+  <a href="/work/" class="zone reveal" style="transition-delay: 0.08s;">
+    <div class="zone-num">04</div>
+    <div class="zone-title">The Door</div>
+    <div class="zone-subtitle">Workshops, Certification &amp; Design</div>
+    <p class="zone-desc">Where the studio becomes a practice. Keynotes, intensives, the certification pathway, institutional design consulting. For schools, museums, organizations, and programs ready to go deeper.</p>
+    <span class="zone-arrow">See offerings &rarr;</span>
+  </a>
+
+  <a href="/newcomm/" class="zone zone-full reveal">
+    <div class="zone-full-left">
+      <div class="zone-num">05</div>
+      <div class="zone-title">NewComm</div>
+      <div class="zone-subtitle">The Flagship Expression</div>
+      <p class="zone-desc">What happens when Literary Science infiltrates the last place you&rsquo;d expect it. NewComm operates on the campuses of independent schools&mdash;Horace Mann, Poly Prep&mdash;traditional sites of privilege, and turns them into vessels for community power. The campus infrastructure, the professional networks, the institutional credibility&mdash;all of it repurposed for work those institutions were never built to do.</p>
+      <span class="zone-arrow">Meet the flagship &rarr;</span>
+    </div>
+    <div class="zone-full-right">
+      <div class="zone-stat">
+        <div class="stat-number">$10K</div>
+        <div class="stat-label">Per Company &mdash; real capital into marginalized communities</div>
+      </div>
+      <div class="zone-stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Week Summer Intensive</div>
+      </div>
+      <div class="zone-stat">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Month Loop &mdash; experimentation to execution</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="#">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

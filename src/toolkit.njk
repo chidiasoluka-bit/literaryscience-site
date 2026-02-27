@@ -1,0 +1,165 @@
+---
+layout: false
+nav: toolkit
+title: The Toolkit
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Toolkit — Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .page-header {
+    padding: 8rem 3rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+  }
+  .page-header .page-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 500px;
+  }
+
+  .tools {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem 5rem;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .tool {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--paper-dark);
+    transition: padding-left 0.3s;
+  }
+  .tool:hover { padding-left: 1rem; }
+
+  .tool-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.42rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faded); margin-bottom: 0.5rem;
+  }
+  .tool-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700; font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  .tool-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem; line-height: 1.7;
+    color: var(--warm-gray); max-width: 520px;
+  }
+  .tool-dl {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.52rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; color: var(--ink);
+    border: 1px solid var(--paper-dark);
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s; white-space: nowrap;
+    display: inline-block; margin-top: 0.5rem;
+  }
+  .tool-dl:hover {
+    background: var(--ink); color: var(--paper);
+    border-color: var(--ink);
+  }
+  .tool-dl.coming {
+    color: var(--paper-dark); border-color: var(--paper-dark); cursor: default;
+  }
+  .tool-dl.coming:hover {
+    background: transparent; color: var(--paper-dark); border-color: var(--paper-dark);
+  }
+
+  .tools-cta {
+    padding: 3rem 3rem 5rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .tools-cta p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 500px;
+  }
+  .tools-cta a {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.55rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px; margin-top: 1rem;
+    display: inline-block; transition: padding-bottom 0.3s;
+  }
+  .tools-cta a:hover { padding-bottom: 6px; }
+
+  @media (max-width: 600px) {
+    .tool { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">The Work</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/toolkit/" class="active">Toolkit</a></li>
+    <li><a href="/work/">Engage</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="section-label">03 — The Toolkit</div>
+  <h1>Toolkit</h1>
+  <p class="page-desc">The open shelf by the door. Free tools for teachers, facilitators, and practitioners. Download Friday, use Monday.</p>
+</header>
+
+<div class="tools">
+  {% for tool in collections.toolkit %}
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">{{ tool.data.format }} — {{ tool.data.filetype or 'PDF' }}</div>
+      <div class="tool-title">{{ tool.data.title }}</div>
+      <p class="tool-desc">{{ tool.templateContent | safe }}</p>
+    </div>
+    {% if tool.data.download_url %}
+    <a href="{{ tool.data.download_url }}" class="tool-dl" download>Download</a>
+    {% else %}
+    <span class="tool-dl coming">Coming soon</span>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="tools-cta reveal">
+  <p>These tools are free and always will be. If you want to go deeper — workshops, certification, or institutional design consulting — that's through The Door.</p>
+  <a href="/work/">See paid offerings →</a>
+</div>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;—&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;—&nbsp; © 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

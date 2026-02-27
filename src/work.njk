@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engage &mdash; Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .page-header {
+    padding: 8rem 3rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+  }
+  .page-header .page-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 500px;
+  }
+
+  .offerings {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .offering {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    border-bottom: 1px solid var(--paper-dark);
+    transition: background 0.4s;
+  }
+
+  .offering:hover { background: var(--paper-light); }
+
+  .offering-left {
+    padding: 3rem;
+    border-right: 1px solid var(--paper-dark);
+  }
+
+  .offering-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 3rem; font-weight: 700;
+    opacity: 0.05; line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .offering-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+
+  .offering-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.5rem;
+  }
+
+  .offering-right {
+    padding: 3rem;
+  }
+
+  .offering-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 520px;
+  }
+
+  .offering-body + .offering-body { margin-top: 1rem; }
+
+  .offering-formats {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .format-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--paper-dark);
+    color: var(--faded);
+  }
+
+  .offering-cta {
+    margin-top: 2rem;
+  }
+
+  .offering-cta a {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--ink);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .offering-cta a:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* contact strip */
+  .contact-strip {
+    padding: 4rem 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-strip::before, .contact-strip::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 20px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px);
+  }
+  .contact-strip::before { left: 0; }
+  .contact-strip::after { right: 0; }
+
+  .contact-strip h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-strip p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--paper-dark);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .contact-strip a {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--paper);
+    border: 1px solid var(--paper-dark);
+    padding: 0.7rem 1.6rem;
+    display: inline-block;
+    margin-top: 2rem;
+    transition: all 0.3s;
+  }
+
+  .contact-strip a:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  @media (max-width: 768px) {
+    .offering { grid-template-columns: 1fr; }
+    .offering-left { border-right: none; border-bottom: 1px solid var(--paper-dark); padding: 2rem 1.5rem; }
+    .offering-right { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">The Work</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/work/" class="active">Engage</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="section-label">04 &mdash; The Door</div>
+  <h1>Engage</h1>
+  <p class="page-desc">Where the studio becomes a practice. For schools, museums, community organizations, and programs ready to go deeper.</p>
+</header>
+
+<div class="offerings">
+
+  <div class="offering reveal">
+    <div class="offering-left">
+      <div class="offering-num">01</div>
+      <div class="offering-title">Workshops &amp; Speaking</div>
+      <div class="offering-tag">Available Now</div>
+    </div>
+    <div class="offering-right">
+      <p class="offering-body">From the epistemological case to hands-on practice with the methodology. Whether you need a provocation for your next convening or a deep dive for your faculty, the engagement is built around what your organization actually needs.</p>
+      <p class="offering-body">Every engagement starts with the same question: what systems are your people navigating, and what literature has already rendered those systems visible?</p>
+      <div class="offering-formats">
+        <span class="format-tag">Keynote</span>
+        <span class="format-tag">Half-Day Workshop</span>
+        <span class="format-tag">Full-Day Intensive</span>
+        <span class="format-tag">Multi-Day Residency</span>
+      </div>
+      <div class="offering-cta">
+        <a href="#">Inquire &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="offering reveal">
+    <div class="offering-left">
+      <div class="offering-num">02</div>
+      <div class="offering-title">Certification Program</div>
+      <div class="offering-tag">First Cohort &mdash; 2027</div>
+    </div>
+    <div class="offering-right">
+      <p class="offering-body">A structured pathway from Practitioner to Resident to Fellow. Learn the methodology. Teach it. Contribute to its evolution. Certification means you don&rsquo;t just understand Literary Science&mdash;you can facilitate it in your own context, with your own community, using your own texts.</p>
+      <p class="offering-body">The program is designed for educators, community organizers, museum professionals, curriculum designers, and anyone who works at the intersection of literature, community, and systems change.</p>
+      <div class="offering-formats">
+        <span class="format-tag">Practitioner</span>
+        <span class="format-tag">Resident</span>
+        <span class="format-tag">Fellow</span>
+      </div>
+      <div class="offering-cta">
+        <a href="#">Join the Waitlist &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="offering reveal">
+    <div class="offering-left">
+      <div class="offering-num">03</div>
+      <div class="offering-title">Institutional Design</div>
+      <div class="offering-tag">By Engagement</div>
+    </div>
+    <div class="offering-right">
+      <p class="offering-body">Program design, curriculum integration, and organizational consulting for institutions ready to implement Literary Science. This is the deepest engagement&mdash;not a workshop about the methodology, but the methodology built into your institution&rsquo;s architecture.</p>
+      <p class="offering-body">We work with schools, youth development programs, cultural institutions, and community organizations to design programs where literature from marginalized communities drives real community investigation and action.</p>
+      <div class="offering-formats">
+        <span class="format-tag">Program Design</span>
+        <span class="format-tag">Curriculum Integration</span>
+        <span class="format-tag">Organizational Consulting</span>
+      </div>
+      <div class="offering-cta">
+        <a href="#">Start a Conversation &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="contact-strip reveal">
+  <h2>Let&rsquo;s talk.</h2>
+  <p>Whether you&rsquo;re a school looking to transform how your students engage with literature, or an organization exploring what Literary Science could look like in your context&mdash;it starts with a conversation.</p>
+  <a href="mailto:hello@literaryscience.com">hello@literaryscience.com</a>
+</div>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="#">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

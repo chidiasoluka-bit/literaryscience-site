@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&family=JetBrains+Mono:wght@300;400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --ink: #111111;
+  --paper: #f2f2f2;
+  --paper-dark: #d5d5d5;
+  --paper-light: #fafafa;
+  --faded: #888888;
+  --warm-gray: #555555;
+  --accent: #1a1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'EB Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* Film grain */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grainShift 0.5s steps(4) infinite;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(17,17,17,0.1) 100%);
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes revealSlow {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes expandLine {
+  from { width: 0; opacity: 0; }
+  to { width: 50px; opacity: 1; }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.2rem 3rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.nav-logo {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--faded);
+  transition: color 0.4s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
+
+/* ── SHARED COMPONENTS ── */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.section-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--warm-gray);
+  max-width: 620px;
+}
+
+.section-text + .section-text { margin-top: 1rem; }
+
+.section-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: all 0.3s;
+}
+
+.section-link:hover { padding-bottom: 7px; }
+
+/* ── PAGE HEADER (for inner pages) ── */
+.page-header {
+  padding: 8rem 3rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.page-header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.page-header .page-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--warm-gray);
+  max-width: 540px;
+}
+
+/* ── DARK BREAK ── */
+.dark-break {
+  padding: 4rem 3rem;
+  background: var(--ink);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-break::before,
+.dark-break::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; width: 20px;
+  background: repeating-linear-gradient(to bottom,
+    transparent 0px, transparent 3px,
+    rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px
+  );
+}
+
+.dark-break::before { left: 0; }
+.dark-break::after { right: 0; }
+
+.dark-break blockquote {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--paper);
+}
+
+.dark-break cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.48rem;
+  font-style: normal;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--faded);
+}
+
+/* ── FOOTER ── */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--paper-dark);
+}
+
+.footer-left {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+
+.footer-right a {
+  color: var(--faded);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-right a:hover { color: var(--ink); }
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+  .nav-links { gap: 1.2rem; }
+  .page-header { padding: 7rem 1.5rem 2rem; }
+  footer { flex-direction: column; gap: 0.8rem; padding: 2rem 1.5rem; }
+}

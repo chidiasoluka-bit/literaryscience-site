@@ -1,0 +1,203 @@
+---
+layout: false
+nav: studio
+title: The Studio
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Studio — Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .page-header {
+    padding: 8rem 3rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+  }
+  .page-header .page-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 500px;
+  }
+
+  .notebook {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .entry {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--paper-dark);
+    border-bottom: 1px solid var(--paper-dark);
+    transition: background 0.4s;
+  }
+
+  .entry:nth-child(3n) { border-right: none; }
+  .entry:hover { background: var(--paper-light); }
+
+  .entry-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.42rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper-dark);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .entry-type::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .entry-type.musing::before { background: var(--ink); }
+  .entry-type.drawing::before { background: var(--faded); }
+  .entry-type.aside::before { background: var(--paper-dark); }
+  .entry-type.quote::before { background: none; border: 1px solid var(--faded); }
+  .entry-type.pinned::before { background: var(--ink); }
+
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.42rem;
+    letter-spacing: 0.1em;
+    color: var(--paper-dark);
+    margin-bottom: 0.8rem;
+  }
+
+  .entry-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+
+  .entry-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--warm-gray);
+  }
+
+  .entry-body em { color: var(--ink); }
+  .entry-body p { margin-bottom: 0.6rem; }
+  .entry-body p:last-child { margin-bottom: 0; }
+
+  .entry-tall { grid-row: span 2; }
+
+  .entry-dark {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: rgba(242,242,242,0.08);
+  }
+  .entry-dark:hover { background: #1a1a1a; }
+  .entry-dark .entry-type { color: var(--faded); }
+  .entry-dark .entry-body { color: var(--paper-dark); }
+  .entry-dark .entry-date { color: var(--faded); }
+
+  .entry img {
+    width: 100%;
+    margin-bottom: 1rem;
+    filter: grayscale(100%) contrast(1.1);
+    mix-blend-mode: multiply;
+  }
+
+  .notebook-coming {
+    grid-column: 1 / -1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: none;
+  }
+  .notebook-coming p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem; font-style: italic;
+    color: var(--paper-dark);
+  }
+
+  @media (max-width: 900px) {
+    .notebook { grid-template-columns: 1fr 1fr; padding: 0 1.5rem 3rem; }
+    .entry:nth-child(3n) { border-right: 1px solid var(--paper-dark); }
+    .entry:nth-child(2n) { border-right: none; }
+  }
+  @media (max-width: 600px) {
+    .notebook { grid-template-columns: 1fr; }
+    .entry { border-right: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">The Work</a></li>
+    <li><a href="/studio/" class="active">Studio</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/work/">Engage</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="section-label">02 — The Studio</div>
+  <h1>Studio</h1>
+  <p class="page-desc">The table covered in open books and sketches. Musings, drawings, and random asides. The thinking before it becomes formal.</p>
+</header>
+
+<div class="notebook">
+  {% for entry in collections.studio %}
+  <div class="entry{% if entry.data.dark %} entry-dark{% endif %}{% if entry.data.tall %} entry-tall{% endif %} reveal">
+    <div class="entry-type {{ entry.data.type or 'musing' }}">{{ entry.data.type or 'Musing' }}</div>
+    {% if not entry.data.pinned %}
+    <div class="entry-date">{{ entry.data.date | monthYear }}</div>
+    {% endif %}
+    {% if entry.data.image %}
+    <img src="{{ entry.data.image }}" alt="{{ entry.data.title }}">
+    {% endif %}
+    <div class="entry-title"{% if entry.data.type == 'quote' %} style="font-style: italic; font-weight: 400; line-height: 1.5;"{% endif %}>{{ entry.data.title }}</div>
+    <div class="entry-body">
+      {{ entry.templateContent | safe }}
+    </div>
+  </div>
+  {% endfor %}
+
+  {% if collections.studio.length == 0 %}
+  <div class="notebook-coming">
+    <p>The studio is just opening. Musings, drawings, and asides coming soon.</p>
+  </div>
+  {% endif %}
+</div>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;—&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;—&nbsp; © 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
