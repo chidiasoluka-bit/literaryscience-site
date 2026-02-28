@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Literary Productivity Frontier &mdash; Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .page-header {
+    padding: 8rem 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .page-header .doc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 1.5rem;
+  }
+  .page-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+  }
+  .page-header .page-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 560px;
+    margin-top: 1.2rem;
+  }
+
+  /* ── FRONTIER DIAGRAM ── */
+  .frontier-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 3rem 0;
+  }
+
+  .frontier-diagram {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .frontier-diagram svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* axis labels */
+  .axis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    fill: #666;
+  }
+
+  .axis-label-large {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 11px;
+    fill: #999;
+  }
+
+  /* frontier curve */
+  .frontier-curve {
+    fill: none;
+    stroke: #f2f2f2;
+    stroke-width: 2;
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    transition: stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .frontier-curve.drawn {
+    stroke-dashoffset: 0;
+  }
+
+  /* zone fills */
+  .zone-fill {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .zone-fill.visible { opacity: 1; }
+
+  /* strategy markers */
+  .strategy-dot {
+    fill: #f2f2f2;
+    r: 0;
+    transition: r 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .strategy-dot.visible { r: 6; }
+
+  .strategy-dot-ring {
+    fill: none;
+    stroke: #f2f2f2;
+    stroke-width: 1;
+    r: 0;
+    opacity: 0.3;
+    transition: r 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+  }
+  .strategy-dot-ring.visible { r: 14; }
+
+  .strategy-label {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 13px;
+    fill: #f2f2f2;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.3s;
+  }
+  .strategy-label.visible { opacity: 1; }
+
+  .strategy-sublabel {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    fill: #888;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.45s;
+  }
+  .strategy-sublabel.visible { opacity: 1; }
+
+  /* frontier label */
+  .frontier-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    fill: #666;
+    opacity: 0;
+    transition: opacity 1s ease 2s;
+  }
+  .frontier-label.visible { opacity: 1; }
+
+  /* agitation arrow */
+  .agitation-arrow {
+    stroke: #f2f2f2;
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s;
+  }
+  .agitation-arrow.visible { opacity: 0.6; }
+
+  .agitation-arrow-head {
+    fill: #f2f2f2;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s;
+  }
+  .agitation-arrow-head.visible { opacity: 0.6; }
+
+  /* beyond label */
+  .beyond-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 11px;
+    font-style: italic;
+    fill: #888;
+    opacity: 0;
+    transition: opacity 1s ease 0.7s;
+  }
+  .beyond-label.visible { opacity: 1; }
+
+  /* ── STRATEGY CARDS ── */
+  .strategies {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 2px solid var(--ink);
+  }
+
+  .strategy-card {
+    padding: 2.5rem 2.5rem 3rem;
+    border-right: 1px solid var(--paper-dark);
+    transition: all 0.4s;
+    cursor: default;
+  }
+
+  .strategy-card:last-child { border-right: none; }
+
+  .strategy-card:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .strategy-card:hover .sc-num,
+  .strategy-card:hover .sc-question { color: var(--faded); }
+  .strategy-card:hover .sc-desc { color: rgba(242,242,242,0.7); }
+  .strategy-card:hover .sc-example { color: rgba(242,242,242,0.6); border-color: rgba(242,242,242,0.15); }
+  .strategy-card:hover .sc-example-label { color: var(--faded); }
+
+  .sc-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 1.2rem;
+    transition: color 0.4s;
+  }
+
+  .sc-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+
+  .sc-question {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--faded);
+    margin-bottom: 1rem;
+    transition: color 0.4s;
+  }
+
+  .sc-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--warm-gray);
+    transition: color 0.4s;
+  }
+
+  .sc-example {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--paper-dark);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--warm-gray);
+    transition: all 0.4s;
+  }
+
+  .sc-example-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.4rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 0.5rem;
+    display: block;
+    transition: color 0.4s;
+  }
+
+  /* ── CASE STUDY ── */
+  .case-break {
+    padding: 4.5rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .case-break::before, .case-break::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .case-break::before { left: 0; }
+  .case-break::after { right: 0; }
+  .case-break-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .case-break-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+    line-height: 1.8;
+  }
+  .case-break h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--paper);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  .case-break .case-novel {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--paper-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  /* case study arc */
+  .case-arc {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .arc-phase {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    border-bottom: 1px solid var(--paper-dark);
+    padding: 2.5rem 3rem;
+    transition: background 0.4s;
+  }
+
+  .arc-phase:hover { background: var(--paper-light); }
+
+  .arc-phase-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+  }
+
+  .arc-phase-content {}
+
+  .arc-phase-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .arc-phase-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 560px;
+  }
+
+  /* outcome strip */
+  .outcome-strip {
+    padding: 3.5rem 3rem;
+    background: var(--paper-light);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .outcome-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .outcome-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+  }
+  .outcome-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 640px;
+  }
+
+  /* next link */
+  .next-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--paper-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ink);
+    transition: padding-left 0.4s;
+  }
+  .next-page:hover { padding-left: 3.8rem; }
+  .next-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.5rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faded); margin-bottom: 0.4rem;
+  }
+  .next-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem; font-weight: 700;
+  }
+  .next-arrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    transition: transform 0.3s;
+  }
+  .next-page:hover .next-arrow { transform: translateX(6px); }
+
+  @media (max-width: 900px) {
+    .case-break-inner,
+    .arc-phase,
+    .outcome-inner { grid-template-columns: 1fr; gap: 1rem; }
+    .strategies { grid-template-columns: 1fr; }
+    .strategy-card { border-right: none; border-bottom: 1px solid var(--paper-dark); }
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 7rem 1.5rem 2rem; }
+    .frontier-container { padding: 1.5rem; }
+    .strategies .strategy-card { padding: 2rem 1.5rem; }
+    .case-break { padding: 3rem 1.5rem; }
+    .arc-phase { padding: 2rem 1.5rem; }
+    .outcome-strip { padding: 2.5rem 1.5rem; }
+    .next-page { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">Methodology</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+    <li><a href="/workshops/">Workshops</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="doc-label">Research Framework &mdash; LS&ndash;002 &mdash; Asoluka LLC</div>
+  <h1>The Literary Productivity Frontier</h1>
+  <p class="page-desc">A remix of Porter&rsquo;s Productivity Frontier. We replace the focus on cost and efficiency with well-being. The question becomes: how do communities use their flow of assets&mdash;and how do restrictions shape their capacity to thrive?</p>
+</header>
+
+<!-- ── ANIMATED DIAGRAM ── -->
+<div class="frontier-container">
+  <div class="frontier-diagram" id="frontier">
+    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid lines -->
+      <g opacity="0.08">
+        <line x1="100" y1="50" x2="100" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="200" y1="50" x2="200" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="300" y1="50" x2="300" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="400" y1="50" x2="400" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="500" y1="50" x2="500" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="600" y1="50" x2="600" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="700" y1="50" x2="700" y2="430" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="100" y1="130" x2="750" y2="130" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="100" y1="230" x2="750" y2="230" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="100" y1="330" x2="750" y2="330" stroke="#f2f2f2" stroke-width="0.5"/>
+      </g>
+
+      <!-- axes -->
+      <line x1="100" y1="430" x2="750" y2="430" stroke="#555" stroke-width="1.5"/>
+      <line x1="100" y1="430" x2="100" y2="50" stroke="#555" stroke-width="1.5"/>
+
+      <!-- axis labels -->
+      <text x="425" y="475" text-anchor="middle" class="axis-label">Flow of Assets</text>
+      <text x="425" y="460" text-anchor="middle" class="axis-label" style="font-size:7px; fill:#444;">Restricted &larr;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&rarr; Unrestricted</text>
+      <text x="55" y="240" text-anchor="middle" class="axis-label" transform="rotate(-90, 55, 240)">Well-being</text>
+
+      <!-- frontier curve -->
+      <path d="M 130 400 C 200 380, 280 250, 380 170 S 550 90, 720 75"
+            class="frontier-curve" id="curve"/>
+
+      <!-- frontier zone fill (below curve) -->
+      <path d="M 130 400 C 200 380, 280 250, 380 170 S 550 90, 720 75 L 720 430 L 130 430 Z"
+            class="zone-fill" id="zoneFill" fill="url(#zoneGrad)"/>
+
+      <defs>
+        <linearGradient id="zoneGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="rgba(242,242,242,0.03)"/>
+          <stop offset="50%" stop-color="rgba(242,242,242,0.06)"/>
+          <stop offset="100%" stop-color="rgba(242,242,242,0.1)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- frontier label -->
+      <text x="700" y="65" text-anchor="end" class="frontier-label" id="frontierLabel">The Frontier</text>
+
+      <!-- SURVIVAL -->
+      <circle cx="220" cy="360" class="strategy-dot" id="survDot"/>
+      <circle cx="220" cy="360" class="strategy-dot-ring" id="survRing"/>
+      <text x="220" y="340" text-anchor="middle" class="strategy-label" id="survLabel">Survival</text>
+      <text x="220" y="325" text-anchor="middle" class="strategy-sublabel" id="survSub">Immediate fixes</text>
+
+      <!-- REFORM -->
+      <circle cx="420" cy="210" class="strategy-dot" id="refDot"/>
+      <circle cx="420" cy="210" class="strategy-dot-ring" id="refRing"/>
+      <text x="420" y="190" text-anchor="middle" class="strategy-label" id="refLabel">Reform</text>
+      <text x="420" y="175" text-anchor="middle" class="strategy-sublabel" id="refSub">Systemic improvement</text>
+
+      <!-- AGITATION -->
+      <circle cx="620" cy="70" class="strategy-dot" id="agiDot"/>
+      <circle cx="620" cy="70" class="strategy-dot-ring" id="agiRing"/>
+      <text x="620" y="50" text-anchor="middle" class="strategy-label" id="agiLabel">Agitation</text>
+      <text x="620" y="35" text-anchor="middle" class="strategy-sublabel" id="agiSub">Radical rethinking</text>
+
+      <!-- agitation arrow (pushing beyond) -->
+      <line x1="640" y1="72" x2="710" y2="45" class="agitation-arrow" id="agiArrow"/>
+      <polygon points="710,42 715,50 705,50" class="agitation-arrow-head" id="agiArrowHead"/>
+      <text x="720" y="38" class="beyond-label" id="beyondLabel">Beyond the frontier</text>
+
+      <!-- movement path (dotted) showing progression -->
+      <path d="M 220 360 Q 320 300, 420 210"
+            fill="none" stroke="#f2f2f2" stroke-width="1" stroke-dasharray="4 6"
+            opacity="0" class="path-line" id="path1"/>
+      <path d="M 420 210 Q 520 140, 620 70"
+            fill="none" stroke="#f2f2f2" stroke-width="1" stroke-dasharray="4 6"
+            opacity="0" class="path-line" id="path2"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ── STRATEGY CARDS ── -->
+<div class="strategies">
+  <div class="strategy-card reveal">
+    <div class="sc-num">Strategy 01</div>
+    <div class="sc-name">Survival</div>
+    <div class="sc-question">What do you do right now?</div>
+    <p class="sc-desc">Immediate, short-term fixes for individuals or small groups. The underlying system doesn&rsquo;t change. The need is met today. Tomorrow the same problem returns.</p>
+    <div class="sc-example">
+      <span class="sc-example-label">Example</span>
+      A neighbor drives one family to a clinic for medical care. The family&rsquo;s immediate need is met&mdash;but the clinic&rsquo;s restrictive hours and the transportation gaps remain for everyone else.
+    </div>
+  </div>
+
+  <div class="strategy-card reveal">
+    <div class="sc-num">Strategy 02</div>
+    <div class="sc-name">Reform</div>
+    <div class="sc-question">How do you improve the system you have?</div>
+    <p class="sc-desc">Systemic improvements within the existing framework. More people benefit. The flow of assets improves. The community moves closer to the frontier.</p>
+    <div class="sc-example">
+      <span class="sc-example-label">Example</span>
+      A community petitions the city for extended clinic hours and a new bus route. Access improves for a larger group. The flow of assets&mdash;doctors, medication&mdash;moves more freely within the current system.
+    </div>
+  </div>
+
+  <div class="strategy-card reveal">
+    <div class="sc-num">Strategy 03</div>
+    <div class="sc-name">Agitation</div>
+    <div class="sc-question">Who set the rules&mdash;and why?</div>
+    <p class="sc-desc">Radical rethinking that challenges the design itself. Not improving the system&mdash;redesigning it. This pushes beyond the frontier. It redefines what &ldquo;optimal&rdquo; even means.</p>
+    <div class="sc-example">
+      <span class="sc-example-label">Example</span>
+      Families campaign to overhaul healthcare policy altogether&mdash;ensuring that appointment times, locations, and funding structures reflect the needs of historically marginalized communities.
+    </div>
+  </div>
+</div>
+
+<!-- ── CASE STUDY: NET GALA ── -->
+<div class="case-break reveal">
+  <div class="case-break-inner">
+    <div class="case-break-label">Case Study<br>In Practice<br>LS&ndash;003</div>
+    <div>
+      <h2>From <em>House on Mango Street</em> to The Net Gala</h2>
+      <div class="case-novel">Sandra Cisneros &mdash; Social isolation and identity formation</div>
+    </div>
+  </div>
+</div>
+
+<div class="case-arc">
+  <div class="arc-phase reveal">
+    <div class="arc-phase-label">Movement 01<br>The Novel</div>
+    <div class="arc-phase-content">
+      <div class="arc-phase-title">Reading as Technology</div>
+      <p class="arc-phase-text">Students read Sandra Cisneros&rsquo;s <em>House on Mango Street</em>, analyzing the consequences of social isolation on identity formation. The novel renders a system: what happens to a young person&rsquo;s sense of possibility when their world is small by design.</p>
+    </div>
+  </div>
+
+  <div class="arc-phase reveal">
+    <div class="arc-phase-label">Movement 02<br>The Overlay</div>
+    <div class="arc-phase-content">
+      <div class="arc-phase-title">Data from Their Own Community</div>
+      <p class="arc-phase-text">Literary analysis became the basis for research on their peers&rsquo; career aspirations versus representation. They discovered that a high percentage of their peers wanted to become healthcare professionals&mdash;but did not personally know a single healthcare professional.</p>
+    </div>
+  </div>
+
+  <div class="arc-phase reveal">
+    <div class="arc-phase-label">Movement 03<br>The Hypothesis</div>
+    <div class="arc-phase-content">
+      <div class="arc-phase-title">The Gap Is Visibility</div>
+      <p class="arc-phase-text">The system Cisneros rendered&mdash;isolation shaping aspiration&mdash;was operating in their own community. The asset existed (desire). The flow was blocked (no connection to the profession). The strategic response: create the connection.</p>
+    </div>
+  </div>
+
+  <div class="arc-phase reveal">
+    <div class="arc-phase-label">Movement 04<br>The Intervention</div>
+    <div class="arc-phase-content">
+      <div class="arc-phase-title">The Net Gala</div>
+      <p class="arc-phase-text">Using their literacy skills&mdash;proposal writing, data storytelling, strategic communication&mdash;students designed The Net Gala: a networking event modeled after the Met Gala that brought together 100 young people with 50 healthcare professionals. The Net Gala is now NewComm&rsquo;s official annual fundraiser.</p>
+    </div>
+  </div>
+</div>
+
+<div class="outcome-strip reveal">
+  <div class="outcome-inner">
+    <div class="outcome-label">The Arc</div>
+    <p class="outcome-text">Critical reading of fiction led to data-driven community intervention, sustained by strategic writing and communication. A novel became an event. An event became an institution.</p>
+  </div>
+</div>
+
+<a href="/newcomm/" class="next-page">
+  <div>
+    <div class="next-label">Continue Reading</div>
+    <div class="next-title">NewComm &mdash; Literary Science at Full Scale</div>
+  </div>
+  <div class="next-arrow">&rarr;</div>
+</a>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="/workshops/">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+</footer>
+
+<script>
+  // Scroll reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Frontier animation
+  const frontier = document.getElementById('frontier');
+  const frontierObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Draw curve
+        setTimeout(() => {
+          document.getElementById('curve').classList.add('drawn');
+          document.getElementById('zoneFill').classList.add('visible');
+          document.getElementById('frontierLabel').classList.add('visible');
+        }, 300);
+
+        // Survival
+        setTimeout(() => {
+          document.getElementById('survDot').classList.add('visible');
+          document.getElementById('survRing').classList.add('visible');
+          document.getElementById('survLabel').classList.add('visible');
+          document.getElementById('survSub').classList.add('visible');
+        }, 1200);
+
+        // Path 1
+        setTimeout(() => {
+          document.getElementById('path1').style.opacity = '0.25';
+        }, 1800);
+
+        // Reform
+        setTimeout(() => {
+          document.getElementById('refDot').classList.add('visible');
+          document.getElementById('refRing').classList.add('visible');
+          document.getElementById('refLabel').classList.add('visible');
+          document.getElementById('refSub').classList.add('visible');
+        }, 2200);
+
+        // Path 2
+        setTimeout(() => {
+          document.getElementById('path2').style.opacity = '0.25';
+        }, 2800);
+
+        // Agitation
+        setTimeout(() => {
+          document.getElementById('agiDot').classList.add('visible');
+          document.getElementById('agiRing').classList.add('visible');
+          document.getElementById('agiLabel').classList.add('visible');
+          document.getElementById('agiSub').classList.add('visible');
+          document.getElementById('agiArrow').classList.add('visible');
+          document.getElementById('agiArrowHead').classList.add('visible');
+          document.getElementById('beyondLabel').classList.add('visible');
+        }, 3200);
+
+        frontierObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  frontierObs.observe(frontier);
+</script>
+</body>
+</html>
