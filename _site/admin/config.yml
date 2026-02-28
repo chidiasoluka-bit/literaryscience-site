@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/img"
+public_folder: "/img"
+
+collections:
+  - name: "studio"
+    label: "Studio Entries"
+    folder: "src/studio"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "Musing", value: "musing" }
+          - { label: "Drawing", value: "drawing" }
+          - { label: "Aside", value: "aside" }
+          - { label: "Quote", value: "quote" }
+          - { label: "Pinned", value: "pinned" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Dark background", name: "dark", widget: "boolean", default: false, required: false }
+      - { label: "Tall (span 2 rows)", name: "tall", widget: "boolean", default: false, required: false }
+      - { label: "Pinned to top", name: "pinned", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "toolkit"
+    label: "Toolkit Items"
+    folder: "src/toolkit"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Format"
+        name: "format"
+        widget: "select"
+        options:
+          - "One-Pager"
+          - "Classroom Protocol"
+          - "Template"
+          - "Reading List"
+          - "Protocol"
+          - "Worksheet"
+          - "Guide"
+      - { label: "File Type", name: "filetype", widget: "string", default: "PDF" }
+      - { label: "Order", name: "order", widget: "number" }
+      - { label: "Download File", name: "download_url", widget: "file", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }

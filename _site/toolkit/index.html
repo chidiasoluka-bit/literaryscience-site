@@ -1,8 +1,3 @@
----
-layout: false
-nav: toolkit
-title: The Toolkit
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,20 +124,67 @@ title: The Toolkit
 </header>
 
 <div class="tools">
-  {% for tool in collections.toolkit %}
+  
   <div class="tool reveal">
     <div>
-      <div class="tool-type">{{ tool.data.format }} — {{ tool.data.filetype or 'PDF' }}</div>
-      <div class="tool-title">{{ tool.data.title }}</div>
-      <p class="tool-desc">{{ tool.templateContent | safe }}</p>
+      <div class="tool-type">One-Pager — PDF</div>
+      <div class="tool-title">The Four Movements at a Glance</div>
+      <p class="tool-desc"><p>A single-page overview of Asset Mapping, Flow Analysis, Strategic Response, and Creative Restoration. Designed to be printed, pinned to a wall, and used as a reference during class. Includes the guiding question for each movement and a brief description of what happens in the novel vs. the community.</p>
+</p>
     </div>
-    {% if tool.data.download_url %}
-    <a href="#" class="tool-dl" data-download="{{ tool.data.download_url }}" data-tool="{{ tool.data.title }}" onclick="openGate(this); return false;">Download</a>
-    {% else %}
+    
     <span class="tool-dl coming">Coming soon</span>
-    {% endif %}
+    
   </div>
-  {% endfor %}
+  
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">Classroom Protocol — PDF</div>
+      <div class="tool-title">Reading a Novel Through Asset Mapping</div>
+      <p class="tool-desc"><p>A structured 45-minute protocol for any novel. Students identify the assets a character possesses, map how those assets are distributed in the novel's world, and then ask: what does this distribution look like in our community? Works with any text. No prior Literary Science training required.</p>
+</p>
+    </div>
+    
+    <span class="tool-dl coming">Coming soon</span>
+    
+  </div>
+  
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">Template — PDF</div>
+      <div class="tool-title">The Hypothesis Document Template</div>
+      <p class="tool-desc"><p>The three-section template NewComm Fellows use to develop their hypotheses: The Problem (what and why), The Evidence (the numbers), The Hypothesis &amp; Proposed Intervention (the claim and the action). Blank, with guiding prompts for each section. Adaptable to any grade level or context.</p>
+</p>
+    </div>
+    
+    <span class="tool-dl coming">Coming soon</span>
+    
+  </div>
+  
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">Reading List — PDF</div>
+      <div class="tool-title">Novels as Operational Technology</div>
+      <p class="tool-desc"><p>An annotated reading list organized by the systems each novel renders visible. Each entry includes the system it illuminates, suggested data overlays for community investigation, and notes on which of the four movements it best supports. A starting library for any Literary Science practitioner.</p>
+</p>
+    </div>
+    
+    <span class="tool-dl coming">Coming soon</span>
+    
+  </div>
+  
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">Protocol — PDF</div>
+      <div class="tool-title">The Flow Analysis Exercise</div>
+      <p class="tool-desc"><p>A step-by-step classroom exercise: choose a resource (money, information, safety, access), trace how it moves between characters in a novel, identify where it gets blocked, then overlay the same analysis onto community data. Teaches students to see systems as flows, not fixed states.</p>
+</p>
+    </div>
+    
+    <span class="tool-dl coming">Coming soon</span>
+    
+  </div>
+  
 </div>
 
 <div class="tools-cta reveal">

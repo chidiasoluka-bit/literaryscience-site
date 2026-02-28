@@ -1,8 +1,3 @@
----
-layout: false
-nav: studio
-title: The Studio
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,27 +160,112 @@ title: The Studio
 </header>
 
 <div class="notebook">
-  {% for entry in collections.studio %}
-  <div class="entry{% if entry.data.dark %} entry-dark{% endif %}{% if entry.data.tall %} entry-tall{% endif %} reveal">
-    <div class="entry-type {{ entry.data.type or 'musing' }}">{{ entry.data.type or 'Musing' }}</div>
-    {% if not entry.data.pinned %}
-    <div class="entry-date">{{ entry.data.date | monthYear }}</div>
-    {% endif %}
-    {% if entry.data.image %}
-    <img src="{{ entry.data.image }}" alt="{{ entry.data.title }}">
-    {% endif %}
-    <div class="entry-title"{% if entry.data.type == 'quote' %} style="font-style: italic; font-weight: 400; line-height: 1.5;"{% endif %}>{{ entry.data.title }}</div>
+  
+  <div class="entry reveal">
+    <div class="entry-type aside">aside</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">Roots and Routes Design Studio!</div>
     <div class="entry-body">
-      {{ entry.templateContent | safe }}
+      <p><img src="/img/img_3137.jpeg" alt=""></p>
+
     </div>
   </div>
-  {% endfor %}
+  
+  <div class="entry entry-dark entry-tall reveal">
+    <div class="entry-type pinned">pinned</div>
+    
+    
+    <div class="entry-title">The institutional creature</div>
+    <div class="entry-body">
+      <p>&quot;I hate to admit this because I've never thought of myself as an institutional creature. But perhaps that's the point: I'm intrigued by how one might infiltrate or even hack or co-opt, if you will, institutional frameworks to advance new modes of thinking and working.&quot; — Aric Chen</p>
+<p>This is the sentence that won't leave me alone. Every independent school campus NewComm operates on is an institutional framework being co-opted. Every novel we hand to a Fellow is a mode of thinking being advanced through a structure that was never designed for it. The hack isn't dramatic. It's quiet. It's a sixteen-year-old standing in a room that was built for a different kind of student, leading a conversation that was built for a different kind of thinker.</p>
 
-  {% if collections.studio.length == 0 %}
-  <div class="notebook-coming">
-    <p>The studio is just opening. Musings, drawings, and asides coming soon.</p>
+    </div>
   </div>
-  {% endif %}
+  
+  <div class="entry reveal">
+    <div class="entry-type musing">musing</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">On Killer of Sheep and the aesthetics of rendering</div>
+    <div class="entry-body">
+      <p>Burnett shot on weekends over several years with a budget of less than $10,000. He wasn't trying to make a political statement. He was trying to render a life that had never been rendered before — not as pathology, not as uplift, just as it was. The warmth in those frames is the warmth of someone who sees his subjects as whole. That's what a Literary Science novel does. It renders without reducing.</p>
+
+    </div>
+  </div>
+  
+  <div class="entry reveal">
+    <div class="entry-type drawing">drawing</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">The four movements as architecture</div>
+    <div class="entry-body">
+      <p>A sketch of the four movements as a building section — Asset Mapping as foundation, Flow Analysis as structure, Strategic Response as program, Creative Restoration as the light that comes in.</p>
+
+    </div>
+  </div>
+  
+  <div class="entry reveal">
+    <div class="entry-type aside">aside</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">The Ferraris in the parking lot</div>
+    <div class="entry-body">
+      <p>When you walk onto the campus of an independent school in New York — the stone buildings, the manicured grounds, the late-model Range Rovers idling in the drop-off lane — the air has a particular temperature. Cold. Not cruel, exactly, but precise. Competitive. Everything is sorted. And then NewComm arrives and the sorting stops for a few hours and the building becomes something it wasn't designed to be.</p>
+
+    </div>
+  </div>
+  
+  <div class="entry reveal">
+    <div class="entry-type musing">musing</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">Why &quot;restoration&quot; and not &quot;repair&quot;</div>
+    <div class="entry-body">
+      <p>Repair implies the system was once working correctly. Restoration implies something was taken. The distinction matters. We are not fixing broken machines. We are returning what was designed away.</p>
+
+    </div>
+  </div>
+  
+  <div class="entry entry-dark reveal">
+    <div class="entry-type quote">quote</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title" style="font-style: italic; font-weight: 400; line-height: 1.5;">Two things simultaneously</div>
+    <div class="entry-body">
+      <p>&quot;Literature from marginalized voices holds two things simultaneously: the brutal legacy of systemic failures and the homegrown innovation that attempts to dismantle them.&quot; — Literary Science Public Guide</p>
+
+    </div>
+  </div>
+  
+  <div class="entry reveal">
+    <div class="entry-type aside">aside</div>
+    
+    <div class="entry-date">February 2026</div>
+    
+    
+    <div class="entry-title">Nieuwe Instituut and the permanent state of newness</div>
+    <div class="entry-body">
+      <p>Aric Chen on the name: &quot;The new doesn't describe the institute at its time of inception, but rather it describes its permanent state.&quot; Literary Science is like this. It isn't new because it was recently invented. It's new because every time a Fellow opens a novel and overlays it onto their community, the methodology produces something that didn't exist before.</p>
+
+    </div>
+  </div>
+  
+
+  
 </div>
 
 <footer>

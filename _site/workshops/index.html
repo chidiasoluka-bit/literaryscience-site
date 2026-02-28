@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops &mdash; Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .page-header {
+    padding: 8rem 3rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+  }
+  .page-header .page-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; line-height: 1.75;
+    color: var(--warm-gray); max-width: 500px;
+  }
+
+  .workshops-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 3rem 4rem;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .workshops-body p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--warm-gray);
+    margin-bottom: 1.2rem;
+  }
+
+  .workshops-body p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .formats {
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .format-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 1px solid var(--paper-dark);
+    transition: background 0.4s;
+  }
+
+  .format-row:hover { background: var(--paper-light); }
+
+  .format-left {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--paper-dark);
+  }
+
+  .format-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+  .format-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.4rem;
+  }
+
+  .format-right {
+    padding: 2.5rem 2rem;
+  }
+
+  .format-right p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 480px;
+  }
+
+  /* contact strip */
+  .contact-strip {
+    padding: 5rem 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-strip::before, .contact-strip::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 20px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px);
+  }
+  .contact-strip::before { left: 0; }
+  .contact-strip::after { right: 0; }
+
+  .contact-strip h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-strip p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--paper-dark);
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .contact-strip a.contact-email {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--paper);
+    border: 1px solid var(--paper-dark);
+    padding: 0.7rem 1.6rem;
+    display: inline-block;
+    margin-top: 2rem;
+    transition: all 0.3s;
+  }
+
+  .contact-strip a.contact-email:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  @media (max-width: 768px) {
+    .format-row { grid-template-columns: 1fr; }
+    .format-left { border-right: none; border-bottom: 1px solid var(--paper-dark); padding: 1.5rem; }
+    .format-right { padding: 1.5rem; }
+    .workshops-body { padding: 2rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">Methodology</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+    <li><a href="/workshops/" class="active">Workshops</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="section-label">Bring This to Your Space</div>
+  <h1>Workshops</h1>
+  <p class="page-desc">Literary Science runs in-person workshops for schools, museums, libraries, and community organizations.</p>
+</header>
+
+<div class="workshops-body reveal">
+  <p>The methodology is open. The tools are free. You can read the epistemology, download the toolkit, and start practicing Literary Science in your own context tomorrow.</p>
+  <p>Workshops are for institutions that want to go deeper. <strong>We come to your space</strong>, work with your people, and build capacity for your team to practice Literary Science on your own terms&mdash;with your own community, using your own texts.</p>
+</div>
+
+<div class="formats">
+  <div class="format-row reveal">
+    <div class="format-left">
+      <div class="format-name">Half-Day Introduction</div>
+      <div class="format-tag">3&ndash;4 Hours</div>
+    </div>
+    <div class="format-right">
+      <p>The methodology in practice. Your team reads a text through the four movements, maps assets, traces flows, and begins building a hypothesis. You leave with a working understanding of how Literary Science operates.</p>
+    </div>
+  </div>
+
+  <div class="format-row reveal">
+    <div class="format-left">
+      <div class="format-name">Multi-Day Intensive</div>
+      <div class="format-tag">2&ndash;5 Days</div>
+    </div>
+    <div class="format-right">
+      <p>A full cycle. Your team works through every phase of the methodology using a novel and community data from your own context. By the end, you have a hypothesis document and the capacity to facilitate Literary Science independently.</p>
+    </div>
+  </div>
+
+  <div class="format-row reveal">
+    <div class="format-left">
+      <div class="format-name">Ongoing Partnership</div>
+      <div class="format-tag">Semester or Year</div>
+    </div>
+    <div class="format-right">
+      <p>We embed with your institution. Coaching, co-facilitation, and curriculum integration over a full term. For organizations ready to make Literary Science part of what they do&mdash;not a one-time event.</p>
+    </div>
+  </div>
+</div>
+
+<div class="contact-strip reveal">
+  <h2>Let&rsquo;s talk.</h2>
+  <p>Tell us about your space, your community, and what you&rsquo;re trying to build. We&rsquo;ll figure out what makes sense.</p>
+  <a href="mailto:hello@literaryscience.com" class="contact-email">hello@literaryscience.com</a>
+</div>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
