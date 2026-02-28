@@ -223,6 +223,254 @@
     transition: color 0.4s;
   }
 
+  /* ── CASE STUDY ── */
+  .case-intro {
+    padding: 5rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .case-intro::before, .case-intro::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .case-intro::before { left: 0; }
+  .case-intro::after { right: 0; }
+  .case-intro-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .case-intro-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+    line-height: 1.8;
+  }
+  .case-intro h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--paper);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+  .case-intro .case-author {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--paper-dark);
+    margin-bottom: 1.5rem;
+  }
+  .case-intro .case-setup {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(242,242,242,0.7);
+    max-width: 600px;
+  }
+
+  /* analysis sections */
+  .analysis-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 3rem;
+    border-bottom: 1px solid var(--paper-dark);
+    transition: background 0.4s;
+  }
+  .analysis-section:hover { background: var(--paper-light); }
+  .analysis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+  }
+  .analysis-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .analysis-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 580px;
+  }
+  .analysis-text + .analysis-text { margin-top: 0.8rem; }
+
+  /* asset cards */
+  .assets-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 2px solid var(--ink);
+  }
+  .asset-card {
+    padding: 2.5rem 2.5rem 3rem;
+    border-right: 1px solid var(--paper-dark);
+    transition: all 0.4s;
+    cursor: default;
+  }
+  .asset-card:last-child { border-right: none; }
+  .asset-card:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .asset-card:hover .asset-num { color: var(--faded); }
+  .asset-card:hover .asset-desc { color: rgba(242,242,242,0.7); }
+  .asset-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 1.2rem;
+    transition: color 0.4s;
+  }
+  .asset-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .asset-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--warm-gray);
+    transition: color 0.4s;
+  }
+
+  /* flow strip */
+  .flow-strip {
+    padding: 3.5rem 3rem;
+    background: var(--paper-light);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .flow-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .flow-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+  }
+  .flow-col-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .flow-col-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+  }
+
+  /* strategy analysis — highlight colors */
+  .strat-analysis[data-strategy="survival"] .analysis-title { color: #00cccc; }
+  .strat-analysis[data-strategy="reform"] .analysis-title { color: #44cc44; }
+  .strat-analysis[data-strategy="agitation"] .analysis-title { color: #ff44aa; }
+
+  /* SVG pulse */
+  @keyframes arrowPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .arrow-pulse { animation: arrowPulse 1.2s ease-in-out 3; }
+
+  /* synthesis strip */
+  .synthesis-strip {
+    padding: 4rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .synthesis-strip::before, .synthesis-strip::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .synthesis-strip::before { left: 0; }
+  .synthesis-strip::after { right: 0; }
+  .synthesis-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .synthesis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+  }
+  .synthesis-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--paper);
+    max-width: 640px;
+  }
+
+  @media (max-width: 900px) {
+    .case-intro-inner,
+    .analysis-section,
+    .flow-inner,
+    .synthesis-inner { grid-template-columns: 1fr; gap: 1rem; }
+    .assets-grid { grid-template-columns: 1fr; }
+    .asset-card { border-right: none; border-bottom: 1px solid var(--paper-dark); }
+    .flow-inner { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .case-intro { padding: 3rem 1.5rem; }
+    .analysis-section { padding: 2rem 1.5rem; }
+    .assets-grid .asset-card { padding: 2rem 1.5rem; }
+    .flow-strip { padding: 2.5rem 1.5rem; }
+    .synthesis-strip { padding: 3rem 1.5rem; }
+  }
+
   /* next link */
   .next-page {
     max-width: 1200px;
@@ -429,6 +677,85 @@
   </div>
 </div>
 
+<!-- ── CASE STUDY: THE FIRST DAY ── -->
+<div class="case-intro reveal">
+  <div class="case-intro-inner">
+    <div class="case-intro-label">Example Analysis<br>LS&ndash;002a<br>The Frontier<br>in Practice</div>
+    <div>
+      <h2>&ldquo;The First Day&rdquo;</h2>
+      <div class="case-author">Edward P. Jones</div>
+      <p class="case-setup">A young girl&rsquo;s mother attempts to enroll her child in school for the very first time. Set in a working-class, historically marginalized community, the narrative unfolds around a mother&rsquo;s determined efforts to secure an education for her daughter&mdash;a gift the mother herself does not possess. By examining this story through the Literary Productivity Frontier, we see how systemic barriers shape the strategies individuals choose.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Assets -->
+<div class="assets-grid">
+  <div class="asset-card reveal">
+    <div class="asset-num">Asset 01</div>
+    <div class="asset-name">Human Capital</div>
+    <p class="asset-desc">The mother&rsquo;s drive, resilience, and resourcefulness&mdash;even though she cannot read. Her strategizing&mdash;meticulously dressing her daughter, memorizing information, soliciting help to navigate enrollment forms&mdash;reflects a determined mind investing in her child&rsquo;s knowledge, skills, and opportunities.</p>
+  </div>
+  <div class="asset-card reveal">
+    <div class="asset-num">Asset 02</div>
+    <div class="asset-name">Social Capital</div>
+    <p class="asset-desc">The mother leans on informal networks&mdash;neighbors, acquaintances, friends&mdash;to gather information and support. The fact that she knows which school to go to and which documents to bring suggests that social relationships guide her through bureaucratic terrain.</p>
+  </div>
+  <div class="asset-card reveal">
+    <div class="asset-num">Asset 03</div>
+    <div class="asset-name">Public Knowledge &amp; Infrastructure</div>
+    <p class="asset-desc">The school offers access to public knowledge in a structured space. In theory, this institution should provide educational opportunities for every family in the community. In theory.</p>
+  </div>
+</div>
+
+<!-- Flow vs. Restrictions -->
+<div class="flow-strip reveal">
+  <div class="flow-inner">
+    <div class="flow-label">Flow vs.<br>Restrictions</div>
+    <div>
+      <div class="flow-col-title">Flow</div>
+      <p class="flow-col-text">Ideally, public education flows freely to all children. Every family can easily enroll their kids and access learning. Educational resources circulate without hindrance, enhancing human capital directly.</p>
+    </div>
+    <div>
+      <div class="flow-col-title">Restrictions</div>
+      <p class="flow-col-text">The mother encounters complicated paperwork, no reading support, and procedures that assume parental literacy. These barriers prevent educational assets from reaching her daughter smoothly. She circumvents them through extraordinary personal effort rather than structured support.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Strategy Analyses — each highlights the SVG arrow on scroll -->
+<div class="analysis-section strat-analysis reveal" data-strategy="survival" id="stratSurvival">
+  <div class="analysis-label">Strategy 01<br>On the Frontier</div>
+  <div>
+    <div class="analysis-title">Survival</div>
+    <p class="analysis-text">The mother&rsquo;s approach embodies a survival strategy. She meets immediate needs by figuring out the enrollment process on her own terms, using personal grit and drive to navigate opaque requirements. Her daughter starts school. But the enrollment system and its assumptions remain unchanged.</p>
+  </div>
+</div>
+
+<div class="analysis-section strat-analysis reveal" data-strategy="reform" id="stratReform">
+  <div class="analysis-label">Strategy 02<br>On the Frontier</div>
+  <div>
+    <div class="analysis-title">Reform</div>
+    <p class="analysis-text">If the mother and other community members recognized that enrollment procedures unjustly burden many parents, they could advocate for reforms&mdash;simplified forms, staff assistance for non-literate caregivers, informational workshops&mdash;to help more families access the school without heroic individual efforts. The mother&rsquo;s drive, combined with collective action, could transform her solitary struggle into lasting improvement.</p>
+  </div>
+</div>
+
+<div class="analysis-section strat-analysis reveal" data-strategy="agitation" id="stratAgitation">
+  <div class="analysis-label">Strategy 03<br>On the Frontier</div>
+  <div>
+    <div class="analysis-title">Agitation</div>
+    <p class="analysis-text">Beyond reforms, agitation would challenge the very framework of enrollment policies and educational equity. Parents and local leaders might push the school district to redefine what access means&mdash;ensuring policies respect linguistic and cultural diversity, provide reading support for caregivers, and eliminate assumptions that block certain families. Not incremental improvement. Entirely new paradigms of inclusivity.</p>
+  </div>
+</div>
+
+<!-- Synthesis -->
+<div class="synthesis-strip reveal">
+  <div class="synthesis-inner">
+    <div class="synthesis-label">Synthesis</div>
+    <p class="synthesis-text">The mother&rsquo;s strategies remain confined to survival&mdash;not because she lacks vision, but because the system restricts the free flow of educational assets. Remove those restrictions, and suddenly reform and agitation become not just imaginable but attainable. Both mother and daughter move closer to the frontier where their fullest potential can be realized.</p>
+  </div>
+</div>
+
 <a href="/newcomm/" class="next-page">
   <div>
     <div class="next-label">Continue Reading</div>
@@ -507,6 +834,33 @@
     });
   }, { threshold: 0.3 });
   frontierObs.observe(frontier);
+
+  // Strategy sections highlight corresponding SVG arrows on scroll
+  var stratMap = {
+    'stratSurvival': ['survArrow', 'dotCyan'],
+    'stratReform': ['refArrow', 'dotGreen'],
+    'stratAgitation': ['agiArrow', 'dotMagenta']
+  };
+
+  var stratObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var ids = stratMap[entry.target.id];
+      if (!ids) return;
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (entry.isIntersecting) {
+          el.classList.add('arrow-pulse');
+        } else {
+          el.classList.remove('arrow-pulse');
+        }
+      });
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.strat-analysis').forEach(function(el) {
+    stratObs.observe(el);
+  });
 </script>
 </body>
 </html>
