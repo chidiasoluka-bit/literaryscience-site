@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About &mdash; Literary Science</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  /* ── HERO ── */
+  .about-hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-doc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+  }
+
+  .about-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    opacity: 0;
+    animation: revealSlow 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s forwards;
+  }
+
+  .about-title .line-2 {
+    display: block;
+    font-style: italic;
+    opacity: 0;
+    animation: revealSlow 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.35s forwards;
+  }
+
+  .about-rule {
+    width: 80px; height: 2px;
+    background: var(--ink);
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: expandLine 1s ease 0.7s forwards;
+  }
+
+  .about-lead {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.65;
+    max-width: 540px;
+    margin-top: 2rem;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeIn 1.2s ease 1s forwards;
+  }
+
+  /* ── DEFINITION STRIP ── */
+  .def-strip {
+    padding: 5rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .def-strip::before, .def-strip::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .def-strip::before { left: 0; }
+  .def-strip::after { right: 0; }
+  .def-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .def-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+    line-height: 1.8;
+  }
+  .def-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    line-height: 1.55;
+    color: var(--paper);
+    max-width: 700px;
+  }
+  .def-text em {
+    font-style: italic;
+    color: var(--paper-dark);
+  }
+
+  /* ── STRUCTURE GRID ── */
+  .structure {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 2px solid var(--ink);
+  }
+
+  .struct-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .struct-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+  }
+
+  .struct-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .struct-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--paper-dark);
+    transition: all 0.4s;
+  }
+
+  .struct-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .struct-row:hover .struct-num,
+  .struct-row:hover .struct-desc { color: rgba(242,242,242,0.6); }
+
+  .struct-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+    transition: color 0.4s;
+  }
+
+  .struct-content {}
+
+  .struct-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .struct-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 560px;
+    transition: color 0.4s;
+  }
+
+  /* ── MIRROR STRIP ── */
+  .mirror-strip {
+    padding: 4.5rem 3rem;
+    background: var(--paper-light);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .mirror-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .mirror-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+  }
+  .mirror-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 640px;
+  }
+
+  /* ── PEOPLE ── */
+  .people {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .people-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .people-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+  }
+
+  .people-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .person {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--paper-dark);
+  }
+
+  .person-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+  }
+
+  .person-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .person-bio {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 560px;
+  }
+
+  /* ── COLOPHON ── */
+  .colophon {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem;
+    border-top: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .colophon-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+  }
+
+  .colophon-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .colophon-col-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+  }
+
+  /* ── NEXT LINK ── */
+  .next-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--paper-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ink);
+    transition: padding-left 0.4s;
+  }
+  .next-page:hover { padding-left: 3.8rem; }
+  .next-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300; font-size: 0.5rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faded); margin-bottom: 0.4rem;
+  }
+  .next-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem; font-weight: 700;
+  }
+  .next-arrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    transition: transform 0.3s;
+  }
+  .next-page:hover .next-arrow { transform: translateX(6px); }
+
+  @media (max-width: 900px) {
+    .def-inner,
+    .struct-header,
+    .struct-row,
+    .mirror-inner,
+    .people-header,
+    .person,
+    .colophon { grid-template-columns: 1fr; gap: 1rem; }
+    .colophon { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero { padding: 7rem 1.5rem 3rem; }
+    .def-strip { padding: 3rem 1.5rem; }
+    .struct-header { padding: 3rem 1.5rem 1.5rem; }
+    .struct-row { padding: 2rem 1.5rem; }
+    .mirror-strip { padding: 3rem 1.5rem; }
+    .people { padding: 3rem 1.5rem 1.5rem; }
+    .person { padding: 2rem 1.5rem; }
+    .colophon { padding: 2.5rem 1.5rem; grid-template-columns: 1fr; }
+    .next-page { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Literary Science</a>
+  <ul class="nav-links">
+    <li><a href="/epistemology/">Methodology</a></li>
+    <li><a href="/toolkit/">Toolkit</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/newcomm/">NewComm</a></li>
+    <li><a href="/workshops/">Workshops</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="about-hero">
+  <div class="about-doc-label">About &mdash; LS&ndash;000 &mdash; Asoluka LLC &mdash; 2026</div>
+  <h1 class="about-title">Asoluka
+    <span class="line-2">is the mirror.</span>
+  </h1>
+  <div class="about-rule"></div>
+  <p class="about-lead">Asoluka LLC is the research, methodology, and publication studio of the community development practice NewComm. It was established to do what NewComm cannot do while building: think without a commission. Research without a deadline. Publish without permission.</p>
+</header>
+
+<!-- ── DEFINITION STRIP ── -->
+<div class="def-strip reveal">
+  <div class="def-inner">
+    <div class="def-label">Definition<br>The Relationship<br>LS&ndash;000</div>
+    <p class="def-text">NewComm builds. Asoluka thinks. NewComm is the practice&mdash;the classrooms, the campuses, the communities where Literary Science becomes intervention. Asoluka is conceived as its mirror image: a think tank operating within and independently of the practice. <em>It enables the work to interrogate its own production&mdash;to research, theorize, and publish without waiting for a commission and without the need to build anything.</em></p>
+  </div>
+</div>
+
+<!-- ── STRUCTURE ── -->
+<div class="structure">
+  <div class="struct-header reveal">
+    <div class="struct-header-label">What We Do</div>
+    <h2>The studio produces ideas that give NewComm its power.</h2>
+  </div>
+
+  <div class="struct-row reveal">
+    <div class="struct-num">Production 01<br>Research</div>
+    <div class="struct-content">
+      <div class="struct-name">Methodology Development</div>
+      <p class="struct-desc">Literary Science itself is the primary output. Every framework&mdash;the Four Movements, the Literary Productivity Frontier, the Toolkit&mdash;originates here. We develop the epistemology that structures NewComm&rsquo;s interventions before they enter the field.</p>
+    </div>
+  </div>
+
+  <div class="struct-row reveal">
+    <div class="struct-num">Production 02<br>Publication</div>
+    <div class="struct-content">
+      <div class="struct-name">Open-Source Knowledge</div>
+      <p class="struct-desc">This site is the publication. Every page is a working document&mdash;methodology rendered public, available to be studied, adapted, challenged. We publish our thinking because the work belongs to more than one organization.</p>
+    </div>
+  </div>
+
+  <div class="struct-row reveal">
+    <div class="struct-num">Production 03<br>Identity</div>
+    <div class="struct-content">
+      <div class="struct-name">Culture and Positioning</div>
+      <p class="struct-desc">The intellectual identity of NewComm&mdash;its language, its framing, its visual culture&mdash;is designed here. Asoluka expands the work beyond program delivery into broader questions of culture, identity, and institutional design.</p>
+    </div>
+  </div>
+
+  <div class="struct-row reveal">
+    <div class="struct-num">Production 04<br>Provocation</div>
+    <div class="struct-content">
+      <div class="struct-name">Independent Inquiry</div>
+      <p class="struct-desc">Some questions are too speculative for a client. Some ideas are too early for a program. Asoluka holds space for work that has no commission yet&mdash;research that may take years to become useful, or may never become useful at all.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── MIRROR STRIP ── -->
+<div class="mirror-strip reveal">
+  <div class="mirror-inner">
+    <div class="mirror-label">Working Principle</div>
+    <p class="mirror-text">NewComm without Asoluka is a practice without a theory. Asoluka without NewComm is a theory without a practice. The mirror only works when both sides are active.</p>
+  </div>
+</div>
+
+<!-- ── PEOPLE ── -->
+<div class="people">
+  <div class="people-header reveal">
+    <div class="people-header-label">Leadership</div>
+    <h2>Studio Direction</h2>
+  </div>
+
+  <div class="person reveal">
+    <div class="person-role">Founder<br>&amp; Director</div>
+    <div>
+      <div class="person-name">Chidi Asoluka</div>
+      <p class="person-bio">Chidi Asoluka is the founder of Asoluka LLC and the creator of Literary Science. He directs both the studio and NewComm, operating across the mirror&mdash;developing methodology on one side and deploying it on the other. His work sits at the intersection of literary analysis, community development, and institutional design.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── COLOPHON ── -->
+<div class="colophon reveal">
+  <div class="colophon-label">Colophon</div>
+  <div>
+    <div class="colophon-col-title">Typography</div>
+    <p class="colophon-col-text">Libre Baskerville<br>EB Garamond<br>JetBrains Mono</p>
+  </div>
+  <div>
+    <div class="colophon-col-title">Infrastructure</div>
+    <p class="colophon-col-text">Built with Eleventy<br>Hosted on Netlify<br>Open source</p>
+  </div>
+  <div>
+    <div class="colophon-col-title">Contact</div>
+    <p class="colophon-col-text"><a href="mailto:hello@literaryscience.com" style="color: var(--ink);">hello@literaryscience.com</a><br><a href="https://www.newcommproject.org" style="color: var(--warm-gray);">newcommproject.org</a></p>
+  </div>
+</div>
+
+<a href="/" class="next-page">
+  <div>
+    <div class="next-label">Return</div>
+    <div class="next-title">Literary Science &mdash; Home</div>
+  </div>
+  <div class="next-arrow">&rarr;</div>
+</a>
+
+<footer>
+  <div class="footer-left">Literary Science</div>
+  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="/workshops/">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
