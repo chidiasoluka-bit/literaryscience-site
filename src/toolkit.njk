@@ -104,6 +104,87 @@ title: The Toolkit
   }
   .tools-cta a:hover { padding-bottom: 6px; }
 
+  /* ── ASSET VOCABULARY ── */
+  .asset-vocab {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem 4rem;
+  }
+  .vocab-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0 2rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .vocab-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+    line-height: 1.8;
+  }
+  .vocab-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .vocab-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--warm-gray);
+    max-width: 520px;
+  }
+  .vocab-row {
+    display: grid;
+    grid-template-columns: 50px 180px 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--paper-dark);
+    align-items: baseline;
+    transition: all 0.4s;
+  }
+  .vocab-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .vocab-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    color: var(--faded);
+    transition: color 0.4s;
+  }
+  .vocab-row:hover .vocab-num { color: rgba(242,242,242,0.5); }
+  .vocab-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .vocab-def {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--warm-gray);
+    transition: color 0.4s;
+  }
+  .vocab-row:hover .vocab-def { color: rgba(242,242,242,0.6); }
+
+  @media (max-width: 768px) {
+    .vocab-header { grid-template-columns: 1fr; gap: 1rem; }
+    .vocab-row { grid-template-columns: 40px 1fr; gap: 0.8rem; }
+    .vocab-def { grid-column: 1 / -1; }
+  }
+
   @media (max-width: 600px) {
     .tool { grid-template-columns: 1fr; gap: 1rem; }
   }
@@ -128,6 +209,53 @@ title: The Toolkit
   <h1>Toolkit</h1>
   <p class="page-desc">The open shelf by the door. Free tools for teachers, facilitators, and practitioners. Download Friday, use Monday.</p>
 </header>
+
+<!-- ── ASSET VOCABULARY ── -->
+<div class="asset-vocab">
+  <div class="vocab-header reveal">
+    <div class="vocab-label">The Vocabulary<br>LS&ndash;001</div>
+    <div>
+      <h2 class="vocab-title">Asset Stocks</h2>
+      <p class="vocab-desc">Literary Science reads communities the way it reads novels&mdash;by identifying what circulates, what is blocked, and what is carried forward. These are the categories of capital the methodology tracks.</p>
+    </div>
+  </div>
+
+  <div class="vocab-row reveal">
+    <div class="vocab-num">01</div>
+    <div class="vocab-name">Human Capital</div>
+    <div class="vocab-def">Skills, knowledge, and expertise held by individuals&mdash;the parent who teaches, the coach who disciplines, the student who translates.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">02</div>
+    <div class="vocab-name">Social Capital</div>
+    <div class="vocab-def">Networks, relationships, and trust&mdash;the neighbors who show up, the elders who counsel, the circles that hold.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">03</div>
+    <div class="vocab-name">Natural Resources</div>
+    <div class="vocab-def">Environmental gifts&mdash;clean water, green space, community gardens, the creek that still runs.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">04</div>
+    <div class="vocab-name">Built Infrastructure</div>
+    <div class="vocab-def">Libraries, cultural centers, transit routes, safe streets&mdash;the physical architecture of access.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">05</div>
+    <div class="vocab-name">Financial Capital</div>
+    <div class="vocab-def">Grants, microloans, scholarships&mdash;the money that moves, and the money that doesn&rsquo;t.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">06</div>
+    <div class="vocab-name">Manufactured Capital</div>
+    <div class="vocab-def">Tools, computers, instruments, shared machines&mdash;the physical means of production held in common.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">07</div>
+    <div class="vocab-name">Public Knowledge</div>
+    <div class="vocab-def">Oral histories, open-source materials, cultural health practices&mdash;wisdom that belongs to everyone and no one.</div>
+  </div>
+</div>
 
 <div class="tools">
   {% for tool in collections.toolkit %}
