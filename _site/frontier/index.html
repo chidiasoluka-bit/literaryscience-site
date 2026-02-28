@@ -283,7 +283,8 @@
 <header class="page-header">
   <div class="doc-label">Research Framework &mdash; LS&ndash;002 &mdash; Asoluka LLC</div>
   <h1>The Literary Productivity Frontier</h1>
-  <p class="page-desc">A remix of Porter&rsquo;s Productivity Frontier. We replace the focus on cost and efficiency with well-being. The question becomes: how do communities use their flow of assets&mdash;and how do restrictions shape their capacity to thrive? The Frontier is a tool used to study flow in the novel, but also in the next movement: strategic response.</p>
+  <p class="page-desc">A remix of Porter&rsquo;s Productivity Frontier. We replace the focus on cost and efficiency with well-being. The question becomes: how do communities use their flow of assets&mdash;and how do restrictions shape their capacity to thrive?</p>
+  <p class="page-desc" style="margin-top: 0.8rem;">The Frontier operates in two movements. First, it maps the flow of assets inside the novel&mdash;how characters survive, reform, or agitate within the systems they inherit. Then it crosses over: the same framework becomes the basis for strategic response in the real community. The novel is the diagnostic. The Frontier is the instrument.</p>
 </header>
 
 <!-- ── ANIMATED DIAGRAM ── -->
@@ -311,10 +312,10 @@
       <!-- grid lines -->
       <g opacity="0.06">
         <line x1="100" y1="60" x2="100" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
-        <line x1="230" y1="60" x2="230" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
-        <line x1="360" y1="60" x2="360" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
-        <line x1="490" y1="60" x2="490" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
-        <line x1="620" y1="60" x2="620" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="250" y1="60" x2="250" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="400" y1="60" x2="400" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="550" y1="60" x2="550" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
+        <line x1="700" y1="60" x2="700" y2="420" stroke="#f2f2f2" stroke-width="0.5"/>
         <line x1="100" y1="130" x2="720" y2="130" stroke="#f2f2f2" stroke-width="0.5"/>
         <line x1="100" y1="200" x2="720" y2="200" stroke="#f2f2f2" stroke-width="0.5"/>
         <line x1="100" y1="270" x2="720" y2="270" stroke="#f2f2f2" stroke-width="0.5"/>
@@ -326,66 +327,66 @@
       <line x1="100" y1="420" x2="100" y2="55" stroke="#f2f2f2" stroke-width="2"/>
 
       <!-- axis labels -->
-      <text x="410" y="460" text-anchor="middle" class="axis-label">Survival</text>
+      <text x="420" y="455" text-anchor="middle" class="axis-label">Survival</text>
       <text x="55" y="240" text-anchor="middle" class="axis-label" transform="rotate(-90, 55, 240)">Reform</text>
 
-      <!-- frontier curve (quarter circle arc, convex) -->
-      <path d="M 115 72 C 130 200, 250 380, 700 405"
+      <!-- frontier curve (Porter-style: concave, bowing OUTWARD from origin) -->
+      <path d="M 105 80 C 480 78, 695 230, 700 418"
             class="frontier-curve" id="curve"/>
 
-      <!-- fill under curve (above-left of curve = inside frontier) -->
-      <path d="M 115 72 C 130 200, 250 380, 700 405 L 700 420 L 100 420 L 100 72 Z"
+      <!-- fill inside frontier (area between curve and axes) -->
+      <path d="M 105 80 C 480 78, 695 230, 700 418 L 700 420 L 100 420 L 100 80 Z"
             class="zone-fill" id="zoneFill" fill="url(#zoneGrad)"/>
 
-      <!-- frontier label -->
-      <text x="380" y="190" class="frontier-label" id="frontierLabel" transform="rotate(-42, 380, 190)">The Frontier</text>
+      <!-- frontier label (along the curve) -->
+      <text x="480" y="140" class="frontier-label" id="frontierLabel" transform="rotate(-58, 480, 140)">The Frontier</text>
 
       <!-- innovation label at apex of curve -->
-      <text x="145" y="58" class="strategy-label" id="innovLabel" style="font-size: 14px;">Innovation</text>
-      <text x="145" y="45" class="strategy-sublabel" id="innovSub" style="font-size: 7px;">Beyond the frontier</text>
+      <text x="140" y="65" class="strategy-label" id="innovLabel" style="font-size: 14px;">Innovation</text>
+      <text x="140" y="50" class="strategy-sublabel" id="innovSub" style="font-size: 7px;">Beyond the frontier</text>
 
-      <!-- ── STARTING POINT (orange X) ── -->
+      <!-- ── STARTING POINT (orange X, well inside the frontier) ── -->
       <g id="startPoint" opacity="0">
-        <line x1="255" y1="325" x2="275" y2="345" stroke="#ff8844" stroke-width="3" stroke-linecap="round"/>
-        <line x1="275" y1="325" x2="255" y2="345" stroke="#ff8844" stroke-width="3" stroke-linecap="round"/>
+        <line x1="250" y1="330" x2="270" y2="350" stroke="#ff8844" stroke-width="3" stroke-linecap="round"/>
+        <line x1="270" y1="330" x2="250" y2="350" stroke="#ff8844" stroke-width="3" stroke-linecap="round"/>
       </g>
 
-      <!-- ── SURVIVAL ARROW (horizontal right, cyan) ── -->
-      <line x1="285" y1="335" x2="500" y2="335"
+      <!-- ── SURVIVAL ARROW (horizontal right toward frontier, cyan) ── -->
+      <line x1="280" y1="340" x2="530" y2="340"
             stroke="#00cccc" stroke-width="2" marker-end="url(#ah-surv)"
             class="dir-arrow" id="survArrow" opacity="0"/>
-      <text x="510" y="332" class="strategy-label" id="survLabel" style="fill: #00cccc; font-size: 11px;">Survival</text>
-      <text x="510" y="348" class="strategy-sublabel" id="survSub" style="fill: #00aaaa; font-size: 7px;">Immediate fixes</text>
+      <text x="540" y="337" class="strategy-label" id="survLabel" style="fill: #00cccc; font-size: 11px;">Survival</text>
+      <text x="540" y="353" class="strategy-sublabel" id="survSub" style="fill: #00aaaa; font-size: 7px;">Immediate fixes</text>
 
-      <!-- ── REFORM ARROW (vertical up, green) ── -->
-      <line x1="265" y1="315" x2="265" y2="140"
+      <!-- ── REFORM ARROW (vertical up toward frontier, green) ── -->
+      <line x1="260" y1="320" x2="260" y2="130"
             stroke="#44cc44" stroke-width="2" marker-end="url(#ah-ref)"
             class="dir-arrow" id="refArrow" opacity="0"/>
-      <text x="230" y="125" text-anchor="middle" class="strategy-label" id="refLabel" style="fill: #44cc44; font-size: 11px;">Reform</text>
-      <text x="230" y="112" text-anchor="middle" class="strategy-sublabel" id="refSub" style="fill: #33aa33; font-size: 7px;">Systemic improvement</text>
+      <text x="225" y="115" text-anchor="middle" class="strategy-label" id="refLabel" style="fill: #44cc44; font-size: 11px;">Reform</text>
+      <text x="225" y="102" text-anchor="middle" class="strategy-sublabel" id="refSub" style="fill: #33aa33; font-size: 7px;">Systemic improvement</text>
 
-      <!-- ── AGITATION ARROW (diagonal toward innovation, magenta) ── -->
-      <line x1="278" y1="322" x2="510" y2="155"
+      <!-- ── AGITATION ARROW (diagonal, pushing past frontier, magenta) ── -->
+      <line x1="273" y1="327" x2="530" y2="120"
             stroke="#ff44aa" stroke-width="2" marker-end="url(#ah-agi)"
             class="dir-arrow" id="agiArrow" opacity="0"/>
-      <text x="520" y="150" class="strategy-label" id="agiLabel" style="fill: #ff44aa; font-size: 11px;">Agitate</text>
-      <text x="520" y="166" class="strategy-sublabel" id="agiSub" style="fill: #cc3388; font-size: 7px;">Radical rethinking</text>
+      <text x="540" y="115" class="strategy-label" id="agiLabel" style="fill: #ff44aa; font-size: 11px;">Agitate</text>
+      <text x="540" y="131" class="strategy-sublabel" id="agiSub" style="fill: #cc3388; font-size: 7px;">Radical rethinking</text>
 
-      <!-- ── MARKER DOTS on/near frontier ── -->
-      <!-- cyan dot (on frontier, high survival) -->
+      <!-- ── MARKER X's on/near frontier ── -->
+      <!-- cyan X (on frontier, high survival end) -->
       <g id="dotCyan" opacity="0">
-        <line x1="600" y1="388" x2="616" y2="404" stroke="#00cccc" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="616" y1="388" x2="600" y2="404" stroke="#00cccc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="618" y1="348" x2="634" y2="364" stroke="#00cccc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="634" y1="348" x2="618" y2="364" stroke="#00cccc" stroke-width="2.5" stroke-linecap="round"/>
       </g>
-      <!-- green dot (on frontier, high reform) -->
+      <!-- green X (on frontier, high reform end) -->
       <g id="dotGreen" opacity="0">
-        <line x1="118" y1="145" x2="134" y2="161" stroke="#44cc44" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="134" y1="145" x2="118" y2="161" stroke="#44cc44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="175" y1="73" x2="191" y2="89" stroke="#44cc44" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="191" y1="73" x2="175" y2="89" stroke="#44cc44" stroke-width="2.5" stroke-linecap="round"/>
       </g>
-      <!-- magenta dot (beyond frontier) -->
+      <!-- magenta X (beyond frontier, outside the curve) -->
       <g id="dotMagenta" opacity="0">
-        <line x1="365" y1="155" x2="381" y2="171" stroke="#ff44aa" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="381" y1="155" x2="365" y2="171" stroke="#ff44aa" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="470" y1="88" x2="486" y2="104" stroke="#ff44aa" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="486" y1="88" x2="470" y2="104" stroke="#ff44aa" stroke-width="2.5" stroke-linecap="round"/>
       </g>
     </svg>
   </div>
