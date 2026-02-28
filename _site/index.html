@@ -19,51 +19,51 @@
     position: relative;
   }
 
+  .hero-doc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+  }
+
   .hero-title {
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
-    font-size: clamp(4rem, 9vw, 7.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    font-size: clamp(4.5rem, 10vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     opacity: 0;
-    animation: revealSlow 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
+    animation: revealSlow 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s forwards;
   }
 
   .hero-title .line-2 {
     display: block;
     opacity: 0;
-    animation: revealSlow 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
-  }
-
-  .hero-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 300;
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--faded);
-    margin-top: 2.5rem;
-    opacity: 0;
-    animation: fadeIn 1.5s ease 0.8s forwards;
+    animation: revealSlow 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.35s forwards;
   }
 
   .hero-rule {
-    width: 50px; height: 1px;
-    background: var(--faded);
-    margin-top: 2rem;
+    width: 80px; height: 2px;
+    background: var(--ink);
+    margin-top: 2.5rem;
     opacity: 0;
-    animation: expandLine 1.2s ease 1.1s forwards;
+    animation: expandLine 1s ease 0.7s forwards;
   }
 
-  .hero-description {
+  .hero-thesis {
     font-family: 'EB Garamond', serif;
-    font-size: 1.2rem;
-    line-height: 1.75;
-    max-width: 560px;
+    font-size: 1.35rem;
+    line-height: 1.65;
+    max-width: 520px;
     margin-top: 2rem;
-    color: var(--warm-gray);
+    color: var(--ink);
     opacity: 0;
-    animation: fadeIn 1.5s ease 1.3s forwards;
+    animation: fadeIn 1.2s ease 1s forwards;
   }
 
   .hero-scroll {
@@ -80,52 +80,106 @@
     animation: fadeIn 1.5s ease 2s forwards;
   }
 
+  /* thesis strip */
+  .thesis-strip {
+    padding: 4rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .thesis-strip::before, .thesis-strip::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .thesis-strip::before { left: 0; }
+  .thesis-strip::after { right: 0; }
+  .thesis-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .thesis-strip-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+    line-height: 1.8;
+  }
+  .thesis-strip p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    line-height: 1.55;
+    color: var(--paper);
+    max-width: 700px;
+  }
+
   /* marquee */
   .marquee {
-    padding: 0.7rem 0;
-    border-top: 1px solid var(--paper-dark);
+    padding: 0.6rem 0;
     border-bottom: 1px solid var(--paper-dark);
     overflow: hidden;
+    background: var(--ink);
   }
   .marquee-track {
     display: flex; width: max-content;
     animation: scroll 60s linear infinite;
   }
   .marquee-item {
-    font-family: 'EB Garamond', serif;
-    font-size: 0.85rem; font-style: italic;
-    letter-spacing: 0.04em; white-space: nowrap;
-    padding: 0 2rem; color: var(--faded); opacity: 0.6;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.42rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0 2.5rem;
+    color: var(--faded);
+    opacity: 0.7;
   }
-  .marquee-dot { padding: 0 0.5rem; color: var(--paper-dark); }
+  .marquee-dot { padding: 0 0.5rem; color: rgba(242,242,242,0.15); font-size: 0.4rem; }
 
   /* four movements */
   .movements-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 5rem 3rem 2rem;
+    padding: 5rem 3rem 1.5rem;
   }
 
   .movements-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
     margin-bottom: 3rem;
   }
 
   .movements-label {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 300;
-    font-size: 0.5rem;
+    font-size: 0.45rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--faded);
-    margin-bottom: 0.8rem;
+    padding-top: 0.5rem;
+    line-height: 1.8;
   }
+
+  .movements-header-right {}
 
   .movements-title {
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     max-width: 600px;
   }
 
@@ -134,34 +188,52 @@
     font-size: 1.1rem;
     line-height: 1.75;
     color: var(--warm-gray);
-    max-width: 560px;
-    margin-top: 1.2rem;
+    max-width: 520px;
+    margin-top: 1rem;
   }
 
   .movements-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--paper-dark);
+    border-top: 2px solid var(--ink);
   }
 
   .movement {
-    padding: 3rem;
+    padding: 2.5rem 3rem 3rem;
     border-bottom: 1px solid var(--paper-dark);
     border-right: 1px solid var(--paper-dark);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    cursor: default;
+    position: relative;
   }
+
+  .movement:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+
+  .movement:hover .movement-question { color: var(--paper-dark); }
+  .movement:hover .movement-desc { color: rgba(242,242,242,0.7); }
+  .movement:hover .movement-num { color: var(--paper); opacity: 0.08; }
 
   .movement:nth-child(2n) { border-right: none; }
 
   .movement-num {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 3rem; font-weight: 700;
-    opacity: 0.05; line-height: 1; margin-bottom: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 1.5rem;
   }
 
   .movement-name {
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     letter-spacing: -0.01em;
     margin-bottom: 0.3rem;
   }
@@ -171,7 +243,8 @@
     font-size: 1.05rem;
     font-style: italic;
     color: var(--faded);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    transition: color 0.4s;
   }
 
   .movement-desc {
@@ -180,33 +253,76 @@
     line-height: 1.75;
     color: var(--warm-gray);
     max-width: 420px;
+    transition: color 0.4s;
+  }
+
+  /* flow arrow between movements */
+  .movement-flow {
+    display: none;
+  }
+
+  .movements-flow-strip {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    gap: 0;
+    border-bottom: 1px solid var(--paper-dark);
+  }
+
+  .flow-step {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.48rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+
+  .flow-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.7rem;
+    color: var(--paper-dark);
+    padding: 0 1.2rem;
   }
 
   /* quote */
   .home-quote {
-    padding: 4.5rem 3rem;
-    background: var(--ink);
-    text-align: center;
-    position: relative; overflow: hidden;
+    padding: 5rem 3rem;
+    background: var(--paper-light);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    position: relative;
   }
-  .home-quote::before, .home-quote::after {
-    content: ''; position: absolute;
-    top: 0; bottom: 0; width: 20px;
-    background: repeating-linear-gradient(to bottom,
-      transparent 0px, transparent 3px,
-      rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px);
+  .home-quote-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
   }
-  .home-quote::before { left: 0; }
-  .home-quote::after { right: 0; }
+  .home-quote-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.5rem;
+  }
   .home-quote blockquote {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    font-style: italic; line-height: 1.6;
-    max-width: 640px; margin: 0 auto; color: var(--paper);
+    font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+    font-style: italic; line-height: 1.5;
+    max-width: 640px; color: var(--ink);
   }
   .home-quote cite {
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 300; font-size: 0.48rem; font-style: normal;
+    font-weight: 300; font-size: 0.45rem; font-style: normal;
     letter-spacing: 0.2em; text-transform: uppercase;
     display: block; margin-top: 1.5rem; color: var(--faded);
   }
@@ -220,17 +336,24 @@
     padding: 4rem 3rem;
     border-bottom: 1px solid var(--paper-dark);
     border-right: 1px solid var(--paper-dark);
-    transition: background 0.5s;
+    transition: all 0.4s;
     text-decoration: none; color: var(--ink);
     display: block;
   }
   .zone:nth-child(2n) { border-right: none; }
-  .zone:hover { background: var(--paper-light); }
+  .zone:hover { background: var(--ink); color: var(--paper); }
+  .zone:hover .zone-desc { color: rgba(242,242,242,0.7); }
+  .zone:hover .zone-subtitle { color: var(--faded); }
+  .zone:hover .zone-arrow { color: var(--paper); }
 
   .zone-num {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 4rem; font-weight: 700;
-    opacity: 0.04; line-height: 1; margin-bottom: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 1.5rem;
   }
   .zone-title {
     font-family: 'Libre Baskerville', serif;
@@ -242,11 +365,13 @@
     font-weight: 300; font-size: 0.5rem;
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--faded); margin-bottom: 1.2rem;
+    transition: color 0.4s;
   }
   .zone-desc {
     font-family: 'EB Garamond', serif;
     font-size: 1rem; line-height: 1.75;
     color: var(--warm-gray); max-width: 420px;
+    transition: color 0.4s;
   }
   .zone-arrow {
     font-family: 'JetBrains Mono', monospace;
@@ -255,7 +380,6 @@
     color: var(--paper-dark); margin-top: 1.5rem; display: block;
     transition: color 0.3s;
   }
-  .zone:hover .zone-arrow { color: var(--ink); }
 
   /* full-width zone */
   .zone-full {
@@ -264,7 +388,7 @@
     border-right: none;
   }
   .zone-full:hover { background: var(--ink); color: var(--paper); }
-  .zone-full:hover .zone-desc { color: var(--paper-dark); }
+  .zone-full:hover .zone-desc { color: rgba(242,242,242,0.7); }
   .zone-full:hover .zone-subtitle { color: var(--faded); }
   .zone-full:hover .zone-arrow { color: var(--paper); }
 
@@ -290,50 +414,75 @@
 
   /* workshops strip */
   .workshops-strip {
-    padding: 4rem 3rem;
+    padding: 4.5rem 3rem;
     background: var(--ink);
-    text-align: center;
     position: relative; overflow: hidden;
   }
   .workshops-strip::before, .workshops-strip::after {
     content: ''; position: absolute;
-    top: 0; bottom: 0; width: 20px;
+    top: 0; bottom: 0; width: 25px;
     background: repeating-linear-gradient(to bottom,
       transparent 0px, transparent 3px,
-      rgba(242,242,242,0.03) 3px, rgba(242,242,242,0.03) 4px);
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
   }
   .workshops-strip::before { left: 0; }
   .workshops-strip::after { right: 0; }
+  .workshops-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .workshops-strip-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
   .workshops-strip h2 {
     font-family: 'Libre Baskerville', serif;
-    font-weight: 700; font-size: 1.8rem;
-    color: var(--paper); margin-bottom: 1rem;
+    font-weight: 700; font-size: 1.5rem;
+    color: var(--paper); margin-bottom: 0.5rem;
   }
   .workshops-strip p {
     font-family: 'EB Garamond', serif;
-    font-size: 1.1rem; line-height: 1.7;
+    font-size: 1.05rem; line-height: 1.7;
     color: var(--paper-dark);
-    max-width: 480px; margin: 0 auto;
+    max-width: 480px;
   }
-  .workshops-strip a {
+  .workshops-strip a.ws-link {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 300; font-size: 0.55rem;
     letter-spacing: 0.18em; text-transform: uppercase;
     text-decoration: none; color: var(--paper);
     border: 1px solid var(--paper-dark);
     padding: 0.7rem 1.6rem;
-    display: inline-block; margin-top: 2rem;
+    display: inline-block;
     transition: all 0.3s;
+    white-space: nowrap;
   }
-  .workshops-strip a:hover {
+  .workshops-strip a.ws-link:hover {
     background: var(--paper); color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .thesis-strip-inner { grid-template-columns: 1fr; gap: 1rem; }
+    .movements-header { grid-template-columns: 1fr; gap: 1rem; }
+    .home-quote-inner { grid-template-columns: 1fr; gap: 1rem; }
+    .workshops-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 
   @media (max-width: 768px) {
     .hero { padding: 7rem 1.5rem 3rem; }
+    .thesis-strip { padding: 3rem 1.5rem; }
     .movements-section { padding: 3rem 1.5rem 1rem; }
     .movements-grid { grid-template-columns: 1fr; }
     .movement { border-right: none; padding: 2.5rem 1.5rem; }
+    .movements-flow-strip { flex-wrap: wrap; gap: 0.3rem; padding: 1rem 1.5rem; }
     .zones { grid-template-columns: 1fr; }
     .zone { border-right: none; padding: 3rem 1.5rem; }
     .zone-full { grid-template-columns: 1fr; }
@@ -343,6 +492,8 @@
       padding-top: 2rem; margin-top: 2rem;
     }
     .zone-full:hover .zone-full-right { border-top-color: rgba(242,242,242,0.1); }
+    .home-quote { padding: 3.5rem 1.5rem; }
+    .workshops-strip { padding: 3rem 1.5rem; }
   }
 </style>
 </head>
@@ -360,73 +511,116 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-doc-label">Working Document &mdash; Asoluka LLC &mdash; 2026</div>
   <h1 class="hero-title">Literary<span class="line-2">Science.</span></h1>
-  <div class="hero-sub">What we have read &mdash; How we investigate it in the world</div>
   <div class="hero-rule"></div>
-  <p class="hero-description">Literature from marginalized communities is operational technology. It renders designed systems visible. Literary Science puts what writers have seen to work&mdash;in classrooms, on campuses, in communities.</p>
+  <p class="hero-thesis">Literature from marginalized communities is operational technology. It renders designed systems visible. Literary Science puts what writers have seen to work.</p>
   <div class="hero-scroll">Scroll &darr;</div>
 </section>
 
+<div class="thesis-strip">
+  <div class="thesis-strip-inner">
+    <div class="thesis-strip-label">Core Thesis<br>LS&ndash;001</div>
+    <p>Systems are designed. Their most powerful feature is invisibility. Black literature, Black music, Black film have always made these systems plain. Literary Science takes what the artist rendered and builds something in the world with it.</p>
+  </div>
+</div>
+
 <div class="marquee">
   <div class="marquee-track">
-    <span class="marquee-item">&ldquo;Not everything that is faced can be changed, but nothing can be changed until it is faced.&rdquo; &mdash; James Baldwin</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;All that you touch you change. All that you change changes you.&rdquo; &mdash; Octavia Butler</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;If there&rsquo;s a book you want to read, but it hasn&rsquo;t been written yet, then you must write it.&rdquo; &mdash; Toni Morrison</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;Stories matter. Many stories matter.&rdquo; &mdash; Chimamanda Ngozi Adichie</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;What is most important to me must be spoken, made verbal and shared.&rdquo; &mdash; Audre Lorde</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;To be truly visionary we have to root our imagination in our concrete reality while simultaneously imagining possibilities beyond that reality.&rdquo; &mdash; bell hooks</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;Not everything that is faced can be changed, but nothing can be changed until it is faced.&rdquo; &mdash; James Baldwin</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;All that you touch you change. All that you change changes you.&rdquo; &mdash; Octavia Butler</span><span class="marquee-dot">&bull;</span>
-    <span class="marquee-item">&ldquo;If there&rsquo;s a book you want to read, but it hasn&rsquo;t been written yet, then you must write it.&rdquo; &mdash; Toni Morrison</span><span class="marquee-dot">&bull;</span>
+    <span class="marquee-item">Baldwin</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Morrison</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Butler</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Lorde</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">hooks</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Adichie</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Burnett</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Ko</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Kafka</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Baldwin</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Morrison</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Butler</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Lorde</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">hooks</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Adichie</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Burnett</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Ko</span><span class="marquee-dot">/</span>
+    <span class="marquee-item">Kafka</span><span class="marquee-dot">/</span>
   </div>
 </div>
 
 <div class="movements-section reveal">
   <div class="movements-header">
-    <div class="movements-label">The Framework</div>
-    <h2 class="movements-title">Four Movements</h2>
-    <p class="movements-intro">Literary Science operates through four sequential movements. Each builds on the one before it. Together they form a complete arc from observation to action&mdash;from reading a novel to building something that interrupts the design.</p>
+    <div class="movements-label">The Framework<br>Four Sequential<br>Movements</div>
+    <div class="movements-header-right">
+      <h2 class="movements-title">Four Movements</h2>
+      <p class="movements-intro">Each builds on the one before it. Together they form a complete arc&mdash;from reading a novel to building something that interrupts the design.</p>
+    </div>
   </div>
 </div>
 
 <div class="movements-grid" style="max-width: 1200px; margin: 0 auto;">
   <div class="movement reveal">
-    <div class="movement-num">01</div>
+    <div class="movement-num">Movement 01</div>
     <div class="movement-name">Asset Mapping</div>
     <div class="movement-question">Who has what?</div>
     <p class="movement-desc">Identify the resources, relationships, and power inside the text&mdash;and inside the community. See what exists before diagnosing what&rsquo;s missing.</p>
   </div>
 
   <div class="movement reveal" style="transition-delay: 0.08s;">
-    <div class="movement-num">02</div>
+    <div class="movement-num">Movement 02</div>
     <div class="movement-name">Flow Analysis</div>
     <div class="movement-question">How do things move?</div>
     <p class="movement-desc">Track how information, trust, and capital circulate&mdash;or get stuck. The system&rsquo;s assets are not the problem. The problem is how they move.</p>
   </div>
 
   <div class="movement reveal">
-    <div class="movement-num">03</div>
+    <div class="movement-num">Movement 03</div>
     <div class="movement-name">Strategic Response</div>
     <div class="movement-question">What do you do with what you see?</div>
     <p class="movement-desc">Convert observations into decisions. Asset Mapping and Flow Analysis produce understanding. Strategic Response produces action.</p>
   </div>
 
   <div class="movement reveal" style="transition-delay: 0.08s;">
-    <div class="movement-num">04</div>
+    <div class="movement-num">Movement 04</div>
     <div class="movement-name">Creative Restoration</div>
     <div class="movement-question">How do you rebuild?</div>
     <p class="movement-desc">Design new structures that are more honest, more durable, more human. Restore what the community should have had in the first place.</p>
   </div>
 </div>
 
+<div class="movements-flow-strip">
+  <span class="flow-step">Asset Mapping</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step">Flow Analysis</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step">Strategic Response</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step">Creative Restoration</span>
+</div>
+
+<a href="/frontier/" class="zone" style="grid-column: 1 / -1; border-top: 2px solid var(--ink); max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr auto; gap: 3rem; align-items: center; border-bottom: 2px solid var(--ink);">
+  <div class="zone-num" style="margin-bottom: 0;">LS&ndash;002</div>
+  <div>
+    <div class="zone-title" style="margin-bottom: 0.3rem;">The Literary Productivity Frontier</div>
+    <div class="zone-subtitle">Survival &rarr; Reform &rarr; Agitation</div>
+    <p class="zone-desc" style="margin-top: 0.5rem;">A remix of Porter&rsquo;s Productivity Frontier. We replace cost and efficiency with well-being. The question: how do communities use their flow of assets&mdash;and how do restrictions shape their capacity to thrive?</p>
+  </div>
+  <span class="zone-arrow" style="margin-top: 0; font-size: 1.2rem;">&rarr;</span>
+</a>
+
 <div class="home-quote reveal">
-  <blockquote>&ldquo;The novel is not studied. It is used. The project that emerges is not inspired by the book. It is built from it.&rdquo;</blockquote>
-  <cite>Literary Science</cite>
+  <div class="home-quote-inner">
+    <div class="home-quote-label">Working Principle</div>
+    <div>
+      <blockquote>&ldquo;The novel is not studied. It is used. The project that emerges is not inspired by the book. It is built from it.&rdquo;</blockquote>
+      <cite>Literary Science</cite>
+    </div>
+  </div>
 </div>
 
 <div class="zones">
   <a href="/epistemology/" class="zone reveal">
-    <div class="zone-num">01</div>
+    <div class="zone-num">Section 01</div>
     <div class="zone-title">The Methodology</div>
     <div class="zone-subtitle">Why Literature Is Technology</div>
     <p class="zone-desc">The intellectual architecture. Why literature from marginalized communities functions as operational technology. How a novel becomes a response to a designed system.</p>
@@ -434,7 +628,7 @@
   </a>
 
   <a href="/toolkit/" class="zone reveal" style="transition-delay: 0.08s;">
-    <div class="zone-num">02</div>
+    <div class="zone-num">Section 02</div>
     <div class="zone-title">The Toolkit</div>
     <div class="zone-subtitle">Free Tools &amp; Reading List</div>
     <p class="zone-desc">The open shelf by the door. One-pagers, classroom protocols, hypothesis templates, reading list. Things a teacher downloads Friday and uses Monday morning. No gate.</p>
@@ -442,7 +636,7 @@
   </a>
 
   <a href="/studio/" class="zone reveal">
-    <div class="zone-num">03</div>
+    <div class="zone-num">Section 03</div>
     <div class="zone-title">The Studio</div>
     <div class="zone-subtitle">Musings, Drawings &amp; Asides</div>
     <p class="zone-desc">The table covered in open books and sketches. Connections between Killer of Sheep and housing policy. A drawing pinned next to a paragraph from Toni Morrison. The thinking before it becomes formal.</p>
@@ -451,7 +645,7 @@
 
   <a href="/newcomm/" class="zone zone-full reveal">
     <div class="zone-full-left">
-      <div class="zone-num">04</div>
+      <div class="zone-num">Section 04</div>
       <div class="zone-title">NewComm</div>
       <div class="zone-subtitle">Literary Science at Full Scale</div>
       <p class="zone-desc">What happens when Literary Science transforms what a campus is for. NewComm operates at independent schools&mdash;Horace Mann, Poly Prep&mdash;places with extraordinary assets that can serve a larger purpose. The infrastructure, the networks, the credibility. All of it activated for work that benefits everyone in the building and everyone beyond the gate.</p>
@@ -475,9 +669,14 @@
 </div>
 
 <div class="workshops-strip reveal">
-  <h2>Bring this to your space.</h2>
-  <p>Literary Science runs in-person workshops for schools, museums, libraries, and community organizations. If you want this methodology in your context, let&rsquo;s talk.</p>
-  <a href="/workshops/">Learn more &rarr;</a>
+  <div class="workshops-inner">
+    <div class="workshops-strip-label">Workshops<br>&amp; Partnerships</div>
+    <div>
+      <h2>Bring this to your space.</h2>
+      <p>Literary Science runs in-person workshops for schools, museums, libraries, and community organizations. If you want this methodology in your context, let&rsquo;s talk.</p>
+    </div>
+    <a href="/workshops/" class="ws-link">Learn more &rarr;</a>
+  </div>
 </div>
 
 <footer>
