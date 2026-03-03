@@ -6,6 +6,37 @@
 <title>NewComm &mdash; Literary Science</title>
 <link rel="stylesheet" href="/css/style.css">
 <style>
+  /* ── METHODOLOGY STRIP ── */
+  .methodology-strip {
+    padding: 4.5rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .methodology-strip::before,
+  .methodology-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .methodology-strip::before { left: 0; }
+  .methodology-strip::after { right: 0; }
+
+  .methodology-strip p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--paper);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
   .page-header {
     padding: 8rem 3rem 2.5rem;
     max-width: 900px;
@@ -237,6 +268,11 @@
     <li><a href="/about/">About</a></li>
   </ul>
 </nav>
+
+<!-- ── METHODOLOGY STRIP ── -->
+<div class="methodology-strip">
+  <p>Literary Science is the methodology. NewComm is its most complete expression.</p>
+</div>
 
 <header class="page-header">
   <div class="section-label">The Flagship Expression</div>
