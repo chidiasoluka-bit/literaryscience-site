@@ -322,6 +322,7 @@ title: The Toolkit
   <input name="bot-field">
   <input name="name">
   <input name="email">
+  <input name="profession">
   <input name="tool">
 </form>
 
@@ -335,6 +336,7 @@ title: The Toolkit
     <form id="gateForm" onsubmit="submitGate(event)">
       <input type="text" name="name" id="gateName" placeholder="Your name" required class="gate-input">
       <input type="email" name="email" id="gateEmail" placeholder="Email address" required class="gate-input">
+      <input type="text" name="profession" id="gateProfession" placeholder="Your profession (e.g. Teacher, Counselor, Administrator)" required class="gate-input">
       <input type="hidden" name="tool" id="gateTool">
       <input type="hidden" name="form-name" value="toolkit-downloads">
       <input type="hidden" name="bot-field">
@@ -438,6 +440,7 @@ title: The Toolkit
     document.getElementById('gateSuccess').style.display = 'none';
     document.getElementById('gateName').value = '';
     document.getElementById('gateEmail').value = '';
+    document.getElementById('gateProfession').value = '';
     document.getElementById('gateOverlay').classList.add('active');
   }
 
