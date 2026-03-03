@@ -500,12 +500,10 @@
 
   /* ── NEGATION STRIP ── */
   .negation-strip {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 calc(-50vw + 50%);
     padding: 5rem 3rem;
     background: var(--ink);
+    position: relative;
     overflow: hidden;
   }
 
@@ -570,21 +568,18 @@
     line-height: 1.8;
   }
 
-  .negation-text {
+  .negation-strip .negation-text {
     font-family: 'EB Garamond', serif;
     font-size: 1.08rem;
     line-height: 1.8;
     color: rgba(242,242,242,0.75);
+    text-indent: 0;
+    margin-bottom: 0;
   }
 
   /* ── SPECTRUM OF PRACTICE ── */
   .spectrum {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 4rem;
-    margin-bottom: 0;
+    margin: 4rem calc(-50vw + 50%) 0;
   }
 
   .spectrum-inner {
