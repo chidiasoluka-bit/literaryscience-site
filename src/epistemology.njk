@@ -498,85 +498,6 @@
 
   .colophon-right a:hover { color: var(--ink); }
 
-  /* ── NEGATION STRIP ── */
-  .negation-strip {
-    margin: 0 calc(-50vw + 50%);
-    padding: 5rem 3rem;
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .negation-strip::before,
-  .negation-strip::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0; width: 25px;
-    background: repeating-linear-gradient(to bottom,
-      transparent 0px, transparent 3px,
-      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
-  }
-  .negation-strip::before { left: 0; }
-  .negation-strip::after { right: 0; }
-
-  .negation-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .negation-header {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .negation-header-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 300;
-    font-size: 0.45rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--faded);
-    padding-top: 0.4rem;
-  }
-
-  .negation-header h2 {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
-    color: var(--paper);
-    letter-spacing: -0.01em;
-  }
-
-  .negation-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    padding: 1.8rem 0;
-    border-top: 1px solid rgba(242,242,242,0.08);
-  }
-
-  .negation-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 300;
-    font-size: 0.45rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--faded);
-    padding-top: 0.15rem;
-    line-height: 1.8;
-  }
-
-  .negation-strip .negation-text {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.08rem;
-    line-height: 1.8;
-    color: rgba(242,242,242,0.75);
-    text-indent: 0;
-    margin-bottom: 0;
-  }
-
   /* ── SPECTRUM OF PRACTICE ── */
   .spectrum {
     margin: 4rem calc(-50vw + 50%) 0;
@@ -726,8 +647,6 @@
   }
 
   @media (max-width: 900px) {
-    .negation-header,
-    .negation-row,
     .spectrum-header,
     .spectrum-row { grid-template-columns: 1fr; gap: 1rem; }
   }
@@ -740,7 +659,6 @@
     .article { padding: 3rem 1.5rem 6rem; }
     .pull-quote { margin: 2.5rem 0; }
     .full-break { padding: 3.5rem 1.5rem; }
-    .negation-strip { padding: 3rem 1.5rem; }
     .spectrum-header { padding: 3rem 1.5rem 1.5rem; }
     .spectrum-row { padding: 2rem 1.5rem; }
     .colophon { flex-direction: column; gap: 0.8rem; }
@@ -771,7 +689,6 @@
   <a href="#the-pivot">The Pivot</a>
   <a href="#design-mechanism">Design as Mechanism</a>
   <a href="#creative-restoration">Restoration</a>
-  <a href="#not">Is Not</a>
   <a href="#spectrum">Spectrum</a>
 </div>
 
@@ -938,36 +855,6 @@
 
     <p class="no-indent">This is where Literary Science arrives. Not at a solution, but at a practice&mdash;ongoing, generational, rooted. The novel diagnoses. The data confirms. The intervention tests. And restoration ensures that what is built belongs to the people it serves, not the system that made it necessary.</p>
   </section>
-
-  <!-- ── WHAT LITERARY SCIENCE IS NOT ── -->
-  <div class="negation-strip reveal" id="not">
-    <div class="negation-inner">
-      <div class="negation-header">
-        <div class="negation-header-label">Clarification</div>
-        <h2>What Literary Science Is Not</h2>
-      </div>
-
-      <div class="negation-row">
-        <div class="negation-label">Not a<br>Reading Program</div>
-        <p class="negation-text">Literary Science does not exist to improve reading scores&mdash;it exists to convert what is read into community action.</p>
-      </div>
-
-      <div class="negation-row">
-        <div class="negation-label">Not<br>Service Learning</div>
-        <p class="negation-text">Students do not volunteer in communities&mdash;they lead interventions designed from hypotheses they built and budgets they manage.</p>
-      </div>
-
-      <div class="negation-row">
-        <div class="negation-label">Not Tied to<br>One Institution</div>
-        <p class="negation-text">NewComm is one expression of the methodology&mdash;Literary Science is the epistemology, deployable in any context where literature meets community.</p>
-      </div>
-
-      <div class="negation-row">
-        <div class="negation-label">Not Limited to<br>English Class</div>
-        <p class="negation-text">Literary Science is a synthesis discipline that requires English and Math as inputs&mdash;it cannot live inside a single department.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- ── SPECTRUM OF PRACTICE ── -->
   <div class="spectrum" id="spectrum">
