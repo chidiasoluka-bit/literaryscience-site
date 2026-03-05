@@ -274,39 +274,6 @@ title: The Toolkit
   {% endfor %}
 </div>
 
-<!-- Hidden Netlify form for bot detection -->
-<form name="toolkit-signup" netlify netlify-honeypot="bot-field" hidden>
-  <input name="bot-field">
-  <input name="name">
-  <input name="email">
-  <input name="source" value="toolkit">
-</form>
-
-<div class="signup-strip dark reveal" style="max-width: 900px; margin: 0 auto; border-top: 2px solid var(--ink);">
-  <div class="signup-inner" style="grid-template-columns: 1fr; max-width: 600px;">
-    <div class="signup-content">
-      <div class="signup-label" style="margin-bottom: 1rem;">Lead Resource<br>Free Download</div>
-      <h2>Get the free Four Movements One-Pager.</h2>
-      <p>A single page: the four movements, their guiding questions, and what each looks like in the novel vs. the community. Print it. Pin it to your wall. Use it Monday.</p>
-      <form class="signup-form" id="toolkitSignup" onsubmit="submitSignup(event, 'toolkit-signup', this)">
-        <input type="hidden" name="form-name" value="toolkit-signup">
-        <input type="hidden" name="bot-field">
-        <input type="hidden" name="source" value="toolkit">
-        <div class="signup-field">
-          <label for="tk-name">Name</label>
-          <input type="text" id="tk-name" name="name" placeholder="Your name" required class="signup-input">
-        </div>
-        <div class="signup-field">
-          <label for="tk-email">Email</label>
-          <input type="email" id="tk-email" name="email" placeholder="Email address" required class="signup-input">
-        </div>
-        <button type="submit" class="signup-btn">Get the one-pager &rarr;</button>
-      </form>
-      <div class="signup-success" id="toolkitSuccess">You&rsquo;re in. We&rsquo;ll send the one-pager to your inbox.</div>
-    </div>
-  </div>
-</div>
-
 <div class="tools-cta reveal">
   <p>These tools are free and always will be. If you want to go deeper&mdash;workshops, certification, or institutional design consulting&mdash;reach out.</p>
   <a href="/workshops/">Get in touch &rarr;</a>
