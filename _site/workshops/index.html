@@ -93,6 +93,85 @@
     max-width: 480px;
   }
 
+  /* ── ENTRY POINTS ── */
+  .entry-points {
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 2px solid var(--ink);
+  }
+
+  .entry-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .entry-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+  }
+
+  .entry-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    letter-spacing: -0.02em;
+  }
+
+  .entry-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--paper-dark);
+    transition: all 0.4s;
+  }
+
+  .entry-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .entry-row:hover .entry-num,
+  .entry-row:hover .entry-desc { color: rgba(242,242,242,0.6); }
+
+  .entry-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+    transition: color 0.4s;
+  }
+
+  .entry-content {}
+
+  .entry-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .entry-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 480px;
+    transition: color 0.4s;
+  }
+
   /* contact strip */
   .contact-strip {
     padding: 5rem 3rem;
@@ -149,11 +228,18 @@
     color: var(--ink);
   }
 
+  @media (max-width: 900px) {
+    .entry-header,
+    .entry-row { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
   @media (max-width: 768px) {
     .format-row { grid-template-columns: 1fr; }
     .format-left { border-right: none; border-bottom: 1px solid var(--paper-dark); padding: 1.5rem; }
     .format-right { padding: 1.5rem; }
     .workshops-body { padding: 2rem 1.5rem 3rem; }
+    .entry-header { padding: 3rem 1.5rem 1.5rem; }
+    .entry-row { padding: 2rem 1.5rem; }
   }
 </style>
 </head>
@@ -214,6 +300,46 @@
   </div>
 </div>
 
+<!-- ── ENTRY POINTS ── -->
+<div class="entry-points">
+  <div class="entry-header reveal">
+    <div class="entry-header-label">Entry Points</div>
+    <h2>Where You Start Depends on Where You Stand</h2>
+  </div>
+
+  <div class="entry-row reveal">
+    <div class="entry-num">Pathway 01<br>Individual</div>
+    <div class="entry-content">
+      <div class="entry-name">Individual Educators</div>
+      <p class="entry-desc">You teach a course and want to integrate the four movements into your existing practice&mdash;one classroom, one novel, one community connection at a time.</p>
+    </div>
+  </div>
+
+  <div class="entry-row reveal">
+    <div class="entry-num">Pathway 02<br>Department</div>
+    <div class="entry-content">
+      <div class="entry-name">English Departments</div>
+      <p class="entry-desc">Your department wants to adopt Literary Science as a shared framework&mdash;aligning texts, assessments, and community engagement across multiple sections.</p>
+    </div>
+  </div>
+
+  <div class="entry-row reveal">
+    <div class="entry-num">Pathway 03<br>Institution</div>
+    <div class="entry-content">
+      <div class="entry-name">Schools &amp; Institutions</div>
+      <p class="entry-desc">Your school is ready for cross-disciplinary integration&mdash;English, Math, and Literary Science working as a coordinated system with a shared community challenge.</p>
+    </div>
+  </div>
+
+  <div class="entry-row reveal">
+    <div class="entry-num">Pathway 04<br>Partnership</div>
+    <div class="entry-content">
+      <div class="entry-name">Full Partnership</div>
+      <p class="entry-desc">Your institution wants to become a site of community design&mdash;students leading real projects with real budgets, the campus transformed into shared infrastructure.</p>
+    </div>
+  </div>
+</div>
+
 <div class="contact-strip reveal">
   <h2>Let&rsquo;s talk.</h2>
   <p>Tell us about your space, your community, and what you&rsquo;re trying to build. We&rsquo;ll figure out what makes sense.</p>
@@ -222,7 +348,7 @@
 
 <footer>
   <div class="footer-left">Literary Science</div>
-  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+  <div class="footer-right">A <a href="https://www.newcommpartners.org" style="color: var(--faded);">NewComm Partners</a> property &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
 </footer>
 
 <script>

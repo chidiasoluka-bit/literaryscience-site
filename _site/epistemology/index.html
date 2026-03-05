@@ -498,6 +498,95 @@
 
   .colophon-right a:hover { color: var(--ink); }
 
+  /* ── SPECTRUM OF PRACTICE ── */
+  .spectrum {
+    margin: 4rem calc(-50vw + 50%) 0;
+  }
+
+  .spectrum-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 2px solid var(--ink);
+  }
+
+  .spectrum-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .spectrum-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+  }
+
+  .spectrum-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    letter-spacing: -0.02em;
+  }
+
+  .spectrum-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--paper-dark);
+    transition: all 0.4s;
+  }
+
+  .spectrum-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .spectrum-row:hover .spectrum-num,
+  .spectrum-row:hover .spectrum-desc { color: rgba(242,242,242,0.6); }
+
+  .spectrum-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.3rem;
+    line-height: 1.8;
+    transition: color 0.4s;
+  }
+
+  .spectrum-content {}
+
+  .spectrum-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .spectrum-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 560px;
+    transition: color 0.4s;
+  }
+
+  .spectrum-border-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 2px solid var(--ink);
+  }
+
   .toc {
     position: fixed;
     left: 2.5rem;
@@ -557,6 +646,11 @@
     .toc { display: none; }
   }
 
+  @media (max-width: 900px) {
+    .spectrum-header,
+    .spectrum-row { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
@@ -565,6 +659,8 @@
     .article { padding: 3rem 1.5rem 6rem; }
     .pull-quote { margin: 2.5rem 0; }
     .full-break { padding: 3.5rem 1.5rem; }
+    .spectrum-header { padding: 3rem 1.5rem 1.5rem; }
+    .spectrum-row { padding: 2rem 1.5rem; }
     .colophon { flex-direction: column; gap: 0.8rem; }
   }
 </style>
@@ -592,6 +688,8 @@
   <a href="#the-tragedy">The Tragedy</a>
   <a href="#the-pivot">The Pivot</a>
   <a href="#design-mechanism">Design as Mechanism</a>
+  <a href="#creative-restoration">Restoration</a>
+  <a href="#spectrum">Spectrum</a>
 </div>
 
 <!-- HERO -->
@@ -603,7 +701,7 @@
   <div class="hero-byline">
     <span>Chidi Asoluka</span>
     <span>February 2026</span>
-    <span>Asoluka LLC</span>
+    <span>NewComm Partners</span>
   </div>
 </section>
 
@@ -657,7 +755,7 @@
       <h2 class="section-title">The Black Artist and the Good Use</h2>
     </div>
 
-    <p class="no-indent">Black literature, Black music, and Black film have always functioned as technologies of disruption. They are acts of rendering&mdash;making visible the architecture of systems that were designed to remain unseen.</p>
+    <p class="no-indent">Literature, especially from marginalized voices, has always functioned as a technology of disruption&mdash;an act of rendering, making visible the architecture of systems that were designed to remain unseen.</p>
 
     <p>When a novelist traces the interior life of a character navigating housing instability, they are not simply telling a story. They are performing an X-ray&mdash;showing the reader the visible gears of eviction and displacement, and the invisible ones: the ones that get into a person&rsquo;s sleep, that whisper what is realistic, that quietly redraw the borders of the possible. The novelist renders what no policy report can capture: how a system feels from inside, how it reproduces itself through the very people it constrains.</p>
 
@@ -667,7 +765,7 @@
       <p>The gaze is pointed not at the author as an object of study, but at the author as a guide&mdash;someone who has already seen the machine and left a rendering so detailed that others can use it to intervene.</p>
     </div>
 
-    <p class="no-indent">From the spirituals that encoded escape routes in song, to the novels that anatomized the machinery of Jim Crow, to the films that make the viewer feel the weight of systems they have been taught not to see&mdash;Black artists have always been swinging an ax at the invisible threads. Literary Science restores them to this role: not the subject of a lesson plan, but the disruptor whose work is still operational.</p>
+    <p class="no-indent">From the spirituals that encoded escape routes in song, to the novels that anatomized the machinery of Jim Crow, to the films that make the viewer feel the weight of systems they have been taught not to see&mdash;artists from marginalized communities have always been swinging an ax at the invisible threads. Literary Science restores them to this role: not the subject of a lesson plan, but the disruptor whose work is still operational.</p>
   </section>
 
   <!-- KAFKA BREAK -->
@@ -677,7 +775,7 @@
   </div>
 
   <section class="article-section reveal">
-    <p class="no-indent">Kafka wanted literature to shatter the ice of complacency inside the individual reader. Black literature does something more. It swings the ax at the frozen sea of <em>system invisibility</em>&mdash;the thick ice of designed structures that have been made to look like nature. Literary Science takes what the ax cracks open and builds something in the world with it. Kafka&rsquo;s ax frees the reader. This ax frees the community.</p>
+    <p class="no-indent">Kafka wanted literature to shatter the ice of complacency inside the individual reader. Literature from marginalized communities does something more. It swings the ax at the frozen sea of <em>system invisibility</em>&mdash;the thick ice of designed structures that have been made to look like nature. Literary Science takes what the ax cracks open and builds something in the world with it. Kafka&rsquo;s ax frees the reader. This ax frees the community.</p>
   </section>
 
   <div class="sep">&middot; &middot; &middot;</div>
@@ -729,16 +827,73 @@
 
     <p class="no-indent">Aric Chen describes design as &ldquo;a mechanism for responding to, and sometimes exacerbating, the cycles of backlash, pushback, and spiraling feedback loops that have more and more pushed our worlds to extremes&mdash;from extreme weather to extreme inequality and polarization.&rdquo;</p>
 
-    <p>The systems that Black literature renders&mdash;redlining, disinvestment, educational sorting, carceral expansion&mdash;are all design. They were designed by someone, for purposes that served someone, and they produce feedback loops that compound over generations. The inequality is not an accident. It is a design outcome.</p>
+    <p>The systems that this literature renders&mdash;redlining, disinvestment, educational sorting, carceral expansion&mdash;are all design. They were designed by someone, for purposes that served someone, and they produce feedback loops that compound over generations. The inequality is not an accident. It is a design outcome.</p>
 
     <p>But if design can exacerbate, it can also respond. Literary Science begins with the fullest available rendering of the problem&mdash;the novel&mdash;and moves toward responses that interrupt the feedback loops rather than reinforce them. Wherever it is practiced&mdash;in a classroom, a community organization, a policy shop, a museum, a graduate seminar&mdash;the discipline is the same: see the machine, overlay it onto the world as it actually operates, and build something that breaks the cycle.</p>
 
     <p>At NewComm&mdash;The New Community Project, where Literary Science was born&mdash;this takes a specific form: student-led Companies with real budgets prototyping interventions in their own communities. But NewComm is one expression of the methodology, not the boundary of it. Literary Science is the seeing. What you build with what you see depends on where you stand.</p>
   </section>
 
+  <div class="sep">&middot; &middot; &middot;</div>
+
+  <!-- ── 07: CREATIVE RESTORATION ── -->
+  <section class="article-section reveal" id="creative-restoration">
+    <div class="section-header">
+      <span class="section-num">Section VII</span>
+      <h2 class="section-title">Creative Restoration</h2>
+    </div>
+
+    <p class="no-indent">Reform improves the system. Agitation challenges who controls it. But neither asks the deeper question: what would these institutions look like if they had been built by the communities they claim to serve?</p>
+
+    <p>Creative restoration is the final movement. It does not settle for a better version of what exists. It returns to the cultural foundations&mdash;the generational knowledge, the oral histories, the communal practices that predate the systems that displaced them&mdash;and rebuilds from there. Not nostalgia. Architecture. Institutions designed to evolve with the community, anchored in its values, governed by its people, and flexible enough to absorb what no one can predict.</p>
+
+    <p>This is the long view. It asks what a school enrollment process would look like if it had been designed by the mothers who navigate it. What a health system would look like if it had been shaped by the elders who carry its knowledge. What a neighborhood would look like if its residents had drawn the map.</p>
+
+    <div class="pull-quote">
+      <p>Creative restoration does not fix what is broken. It heals what was severed&mdash;the connection between a community&rsquo;s deepest knowledge and the institutions that should have grown from it.</p>
+    </div>
+
+    <p class="no-indent">This is where Literary Science arrives. Not at a solution, but at a practice&mdash;ongoing, generational, rooted. The novel diagnoses. The data confirms. The intervention tests. And restoration ensures that what is built belongs to the people it serves, not the system that made it necessary.</p>
+  </section>
+
+  <!-- ── SPECTRUM OF PRACTICE ── -->
+  <div class="spectrum" id="spectrum">
+    <div class="spectrum-inner">
+      <div class="spectrum-header reveal">
+        <div class="spectrum-header-label">Architecture</div>
+        <h2>Spectrum of Practice</h2>
+      </div>
+
+      <div class="spectrum-row reveal">
+        <div class="spectrum-num">Level 01<br>Pedagogy</div>
+        <div class="spectrum-content">
+          <div class="spectrum-name">A Single Teacher Adopts the Movements</div>
+          <p class="spectrum-desc">One educator integrates the four movements into their existing course. The novel becomes operational technology within a single classroom. Asset Mapping, Flow Analysis, Strategic Response, and Creative Restoration structure the arc of a unit&mdash;but the work lives and ends within that room.</p>
+        </div>
+      </div>
+
+      <div class="spectrum-row reveal">
+        <div class="spectrum-num">Level 02<br>Institutional<br>Framework</div>
+        <div class="spectrum-content">
+          <div class="spectrum-name">School-Wide Adoption</div>
+          <p class="spectrum-desc">The institution organizes multiple disciplines around a shared novel and a shared community challenge. English provides language facility, Math provides data facility, and Literary Science becomes the synthesis layer that connects them. The four movements structure not a unit but a semester&mdash;across departments, across faculty, across the curriculum.</p>
+        </div>
+      </div>
+
+      <div class="spectrum-row reveal">
+        <div class="spectrum-num">Level 03<br>Space<br>Transformation</div>
+        <div class="spectrum-content">
+          <div class="spectrum-name">The School Becomes a Community Design Studio</div>
+          <p class="spectrum-desc">The institution redefines what its campus is for. Students lead real projects with real budgets for real communities. The community enters the building. The building enters the community. Literary Science is no longer a program&mdash;it is the operating logic of the institution itself. This is what NewComm builds.</p>
+        </div>
+      </div>
+    </div>
+    <div class="spectrum-border-bottom"></div>
+  </div>
+
   <!-- CLOSING -->
   <div class="closing reveal">
-    <p class="closing-text">Literary Science is the discipline of taking what artists from marginalized communities have always done&mdash;making the designed world plain&mdash;and using what they rendered to interrupt the cycles that designed systems reproduce.</p>
+    <p class="closing-text">Storytelling is the gateway. Language is the constant thread. Literary Science is the discipline of taking what artists from marginalized communities have always done&mdash;making the designed world plain&mdash;and using what they rendered to build what should have existed all along.</p>
   </div>
 
   <!-- NEXT -->
@@ -754,7 +909,7 @@
   <div class="colophon">
     <div class="colophon-left">Literary Science</div>
     <div class="colophon-right">
-      Asoluka LLC &nbsp;&mdash;&nbsp;
+      NewComm Partners &nbsp;&mdash;&nbsp;
       <a href="#">Contact</a> &nbsp;&mdash;&nbsp;
       &copy; 2026
     </div>

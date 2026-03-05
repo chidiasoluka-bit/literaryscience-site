@@ -6,6 +6,37 @@
 <title>NewComm &mdash; Literary Science</title>
 <link rel="stylesheet" href="/css/style.css">
 <style>
+  /* ── METHODOLOGY STRIP ── */
+  .methodology-strip {
+    padding: 4.5rem 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .methodology-strip::before,
+  .methodology-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; width: 25px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 3px,
+      rgba(242,242,242,0.04) 3px, rgba(242,242,242,0.04) 4px);
+  }
+  .methodology-strip::before { left: 0; }
+  .methodology-strip::after { right: 0; }
+
+  .methodology-strip p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--paper);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
   .page-header {
     padding: 8rem 3rem 2.5rem;
     max-width: 900px;
@@ -238,6 +269,11 @@
   </ul>
 </nav>
 
+<!-- ── METHODOLOGY STRIP ── -->
+<div class="methodology-strip">
+  <p>Literary Science is the methodology. NewComm is its most complete expression.</p>
+</div>
+
 <header class="page-header">
   <div class="section-label">The Flagship Expression</div>
   <h1>NewComm</h1>
@@ -249,7 +285,7 @@
 
   <p>These campuses become shared sites of knowledge-making&mdash;spaces where students from historically marginalized communities and the host institution&rsquo;s own community work alongside each other on challenges that matter to both. Literary Science is the methodology that makes this more than a partnership on paper. It provides the intellectual architecture&mdash;novels as operational technology, community data as evidence, hypothesis as the bridge to action&mdash;so that what happens on campus produces real outcomes for the communities beyond the gate.</p>
 
-  <p>Every year, a client organization presents a real community challenge. Fellows&mdash;high school students from historically marginalized communities&mdash;spend a five-week Summer Intensive developing hypotheses through Literary Science: reading novels as operational technology, overlaying them onto community data, and synthesizing both into specific, testable claims about what could change. When the school year begins, student-led Companies enter the monthly Loop&mdash;a twelve-month cycle of experimentation and execution that culminates in $10,000 community interventions designed, prototyped, and delivered by the students themselves.</p>
+  <p>Every year, a client organization presents a real community challenge. Fellows&mdash;high school students from historically marginalized communities&mdash;spend a five-week Summer Intensive developing hypotheses through Literary Science: reading novels as operational technology, overlaying them onto community data, and synthesizing both into specific, testable claims about what could change. When the school year begins, student-led Project Teams enter the monthly Loop&mdash;a twelve-month cycle of experimentation and execution that culminates in $10,000 community interventions designed, prototyped, and delivered by the students themselves.</p>
 
   <p>No one hands them a lesson plan. The project is the teacher. The community is the classroom. And the campus&mdash;with all of its resources, its people, and its potential&mdash;becomes the infrastructure that makes the work possible. The result is that everyone in the building benefits: the host institution discovers what its space can do when the gate opens, and the community discovers what becomes possible when institutional assets are shared.</p>
 </div>
@@ -301,7 +337,7 @@
 
 <footer>
   <div class="footer-left">Literary Science</div>
-  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="#">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+  <div class="footer-right">A <a href="https://www.newcommpartners.org" style="color: var(--faded);">NewComm Partners</a> property &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
 </footer>
 
 <script>

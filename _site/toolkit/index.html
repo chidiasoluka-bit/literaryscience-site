@@ -99,6 +99,87 @@
   }
   .tools-cta a:hover { padding-bottom: 6px; }
 
+  /* ── ASSET VOCABULARY ── */
+  .asset-vocab {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem 4rem;
+  }
+  .vocab-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0 2rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .vocab-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.45rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 0.4rem;
+    line-height: 1.8;
+  }
+  .vocab-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .vocab-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--warm-gray);
+    max-width: 520px;
+  }
+  .vocab-row {
+    display: grid;
+    grid-template-columns: 50px 180px 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--paper-dark);
+    align-items: baseline;
+    transition: all 0.4s;
+  }
+  .vocab-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .vocab-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    color: var(--faded);
+    transition: color 0.4s;
+  }
+  .vocab-row:hover .vocab-num { color: rgba(242,242,242,0.5); }
+  .vocab-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .vocab-def {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--warm-gray);
+    transition: color 0.4s;
+  }
+  .vocab-row:hover .vocab-def { color: rgba(242,242,242,0.6); }
+
+  @media (max-width: 768px) {
+    .vocab-header { grid-template-columns: 1fr; gap: 1rem; }
+    .vocab-row { grid-template-columns: 40px 1fr; gap: 0.8rem; }
+    .vocab-def { grid-column: 1 / -1; }
+  }
+
   @media (max-width: 600px) {
     .tool { grid-template-columns: 1fr; gap: 1rem; }
   }
@@ -124,6 +205,53 @@
   <p class="page-desc">The open shelf by the door. Free tools for teachers, facilitators, and practitioners. Download Friday, use Monday.</p>
 </header>
 
+<!-- ── ASSET VOCABULARY ── -->
+<div class="asset-vocab">
+  <div class="vocab-header reveal">
+    <div class="vocab-label">The Vocabulary<br>LS&ndash;001</div>
+    <div>
+      <h2 class="vocab-title">Asset Stocks</h2>
+      <p class="vocab-desc">Literary Science reads novels the way it reads communities&mdash;by identifying what circulates, what is blocked, and what is carried forward. These are the categories of capital the methodology tracks.</p>
+    </div>
+  </div>
+
+  <div class="vocab-row reveal">
+    <div class="vocab-num">01</div>
+    <div class="vocab-name">Human Capital</div>
+    <div class="vocab-def">Skills, knowledge, and expertise held by individuals&mdash;the parent who teaches, the coach who disciplines, the student who translates.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">02</div>
+    <div class="vocab-name">Social Capital</div>
+    <div class="vocab-def">Networks, relationships, and trust&mdash;the neighbors who show up, the elders who counsel, the circles that hold.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">03</div>
+    <div class="vocab-name">Natural Resources</div>
+    <div class="vocab-def">Environmental gifts&mdash;clean water, green space, community gardens, the creek that still runs.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">04</div>
+    <div class="vocab-name">Built Infrastructure</div>
+    <div class="vocab-def">Libraries, cultural centers, transit routes, safe streets&mdash;the physical architecture of access.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">05</div>
+    <div class="vocab-name">Financial Capital</div>
+    <div class="vocab-def">Grants, microloans, scholarships&mdash;the money that moves, and the money that doesn&rsquo;t.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">06</div>
+    <div class="vocab-name">Manufactured Capital</div>
+    <div class="vocab-def">Tools, computers, instruments, shared machines&mdash;the physical means of production held in common.</div>
+  </div>
+  <div class="vocab-row reveal">
+    <div class="vocab-num">07</div>
+    <div class="vocab-name">Public Knowledge</div>
+    <div class="vocab-def">Oral histories, open-source materials, cultural health practices&mdash;wisdom that belongs to everyone and no one.</div>
+  </div>
+</div>
+
 <div class="tools">
   
   <div class="tool reveal">
@@ -134,19 +262,7 @@
 </p>
     </div>
     
-    <span class="tool-dl coming">Coming soon</span>
-    
-  </div>
-  
-  <div class="tool reveal">
-    <div>
-      <div class="tool-type">Classroom Protocol — PDF</div>
-      <div class="tool-title">Reading a Novel Through Asset Mapping</div>
-      <p class="tool-desc"><p>A structured 45-minute protocol for any novel. Students identify the assets a character possesses, map how those assets are distributed in the novel's world, and then ask: what does this distribution look like in our community? Works with any text. No prior Literary Science training required.</p>
-</p>
-    </div>
-    
-    <span class="tool-dl coming">Coming soon</span>
+    <a href="#" class="tool-dl" data-download="/toolkit-pdfs/four-movements-at-a-glance.pdf" data-tool="The Four Movements at a Glance" onclick="openGate(this); return false;">Download</a>
     
   </div>
   
@@ -154,11 +270,23 @@
     <div>
       <div class="tool-type">Template — PDF</div>
       <div class="tool-title">The Hypothesis Document Template</div>
-      <p class="tool-desc"><p>The three-section template NewComm Fellows use to develop their hypotheses: The Problem (what and why), The Evidence (the numbers), The Hypothesis &amp; Proposed Intervention (the claim and the action). Blank, with guiding prompts for each section. Adaptable to any grade level or context.</p>
+      <p class="tool-desc"><p>The three-section template used to develop hypotheses: The Problem (what and why), The Evidence (the numbers), The Hypothesis &amp; Proposed Intervention (the claim and the action). Blank, with guiding prompts for each section. Adaptable to any grade level or context.</p>
 </p>
     </div>
     
-    <span class="tool-dl coming">Coming soon</span>
+    <a href="#" class="tool-dl" data-download="/toolkit-pdfs/hypothesis-document-template.pdf" data-tool="The Hypothesis Document Template" onclick="openGate(this); return false;">Download</a>
+    
+  </div>
+  
+  <div class="tool reveal">
+    <div>
+      <div class="tool-type">Guide — PDF</div>
+      <div class="tool-title">Getting Started with Literary Science</div>
+      <p class="tool-desc"><p>A practical guide for teachers who want to use literature as operational technology in their classrooms. What Literary Science is, how the four movements work, and a step-by-step walkthrough you can use this week. No certification required.</p>
+</p>
+    </div>
+    
+    <a href="#" class="tool-dl" data-download="/toolkit-pdfs/getting-started-with-literary-science.pdf" data-tool="Getting Started with Literary Science" onclick="openGate(this); return false;">Download</a>
     
   </div>
   
@@ -174,28 +302,49 @@
     
   </div>
   
-  <div class="tool reveal">
-    <div>
-      <div class="tool-type">Protocol — PDF</div>
-      <div class="tool-title">The Flow Analysis Exercise</div>
-      <p class="tool-desc"><p>A step-by-step classroom exercise: choose a resource (money, information, safety, access), trace how it moves between characters in a novel, identify where it gets blocked, then overlay the same analysis onto community data. Teaches students to see systems as flows, not fixed states.</p>
-</p>
+</div>
+
+<!-- Hidden Netlify form for bot detection -->
+<form name="toolkit-signup" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="source" value="toolkit">
+</form>
+
+<div class="signup-strip dark reveal" style="max-width: 900px; margin: 0 auto; border-top: 2px solid var(--ink);">
+  <div class="signup-inner" style="grid-template-columns: 1fr; max-width: 600px;">
+    <div class="signup-content">
+      <div class="signup-label" style="margin-bottom: 1rem;">Lead Resource<br>Free Download</div>
+      <h2>Get the free Four Movements One-Pager.</h2>
+      <p>A single page: the four movements, their guiding questions, and what each looks like in the novel vs. the community. Print it. Pin it to your wall. Use it Monday.</p>
+      <form class="signup-form" id="toolkitSignup" onsubmit="submitSignup(event, 'toolkit-signup', this)">
+        <input type="hidden" name="form-name" value="toolkit-signup">
+        <input type="hidden" name="bot-field">
+        <input type="hidden" name="source" value="toolkit">
+        <div class="signup-field">
+          <label for="tk-name">Name</label>
+          <input type="text" id="tk-name" name="name" placeholder="Your name" required class="signup-input">
+        </div>
+        <div class="signup-field">
+          <label for="tk-email">Email</label>
+          <input type="email" id="tk-email" name="email" placeholder="Email address" required class="signup-input">
+        </div>
+        <button type="submit" class="signup-btn">Get the one-pager &rarr;</button>
+      </form>
+      <div class="signup-success" id="toolkitSuccess">You&rsquo;re in. We&rsquo;ll send the one-pager to your inbox.</div>
     </div>
-    
-    <span class="tool-dl coming">Coming soon</span>
-    
   </div>
-  
 </div>
 
 <div class="tools-cta reveal">
-  <p>These tools are free and always will be. If you want to go deeper — workshops, certification, or institutional design consulting — that's through The Door.</p>
-  <a href="/work/">See paid offerings →</a>
+  <p>These tools are free and always will be. If you want to go deeper&mdash;workshops, certification, or institutional design consulting&mdash;reach out.</p>
+  <a href="/workshops/">Get in touch &rarr;</a>
 </div>
 
 <footer>
   <div class="footer-left">Literary Science</div>
-  <div class="footer-right">A property of Asoluka LLC &nbsp;—&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;—&nbsp; © 2026</div>
+  <div class="footer-right">A <a href="https://www.newcommpartners.org" style="color: var(--faded);">NewComm Partners</a> property &nbsp;—&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;—&nbsp; © 2026</div>
 </footer>
 
 <!-- Hidden Netlify form for bot detection -->
@@ -203,6 +352,7 @@
   <input name="bot-field">
   <input name="name">
   <input name="email">
+  <input name="profession">
   <input name="tool">
 </form>
 
@@ -216,6 +366,7 @@
     <form id="gateForm" onsubmit="submitGate(event)">
       <input type="text" name="name" id="gateName" placeholder="Your name" required class="gate-input">
       <input type="email" name="email" id="gateEmail" placeholder="Email address" required class="gate-input">
+      <input type="text" name="profession" id="gateProfession" placeholder="Your profession (e.g. Teacher, Counselor, Administrator)" required class="gate-input">
       <input type="hidden" name="tool" id="gateTool">
       <input type="hidden" name="form-name" value="toolkit-downloads">
       <input type="hidden" name="bot-field">
@@ -319,6 +470,7 @@
     document.getElementById('gateSuccess').style.display = 'none';
     document.getElementById('gateName').value = '';
     document.getElementById('gateEmail').value = '';
+    document.getElementById('gateProfession').value = '';
     document.getElementById('gateOverlay').classList.add('active');
   }
 
@@ -358,6 +510,30 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  async function submitSignup(e, formName, formEl) {
+    e.preventDefault();
+    const btn = formEl.querySelector('.signup-btn');
+    const origText = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const data = new URLSearchParams(new FormData(formEl));
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString()
+      });
+    } catch (err) {}
+
+    formEl.style.display = 'none';
+    const successEl = formEl.parentElement.querySelector('.signup-success');
+    if (successEl) successEl.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = origText;
+  }
 </script>
 </body>
 </html>

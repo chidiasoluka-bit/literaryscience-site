@@ -512,7 +512,7 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-doc-label">Working Document &mdash; Asoluka LLC &mdash; 2026</div>
+  <div class="hero-doc-label">Working Document &mdash; NewComm Partners &mdash; 2026</div>
   <h1 class="hero-title">Literary<span class="line-2">Science.</span></h1>
   <div class="hero-rule"></div>
   <p class="hero-thesis">Literature from marginalized communities is operational technology. It renders designed systems visible. Literary Science puts what writers have seen to work.</p>
@@ -522,7 +522,7 @@
 <div class="thesis-strip">
   <div class="thesis-strip-inner">
     <div class="thesis-strip-label">Core Thesis<br>LS&ndash;001</div>
-    <p>Systems are designed. Their most powerful feature is invisibility. Black literature, Black music, Black film have always made these systems plain. Literary Science takes what the artist rendered and builds something in the world with it.</p>
+    <p>Systems are designed. Their most powerful feature is invisibility. Literature, especially from marginalized voices, has always made these systems plain. Literary Science takes what the artist rendered and builds something in the world with it.</p>
   </div>
 </div>
 
@@ -604,7 +604,7 @@
   <div>
     <div class="zone-title" style="margin-bottom: 0.3rem;">The Literary Productivity Frontier</div>
     <div class="zone-subtitle">Survival &rarr; Reform &rarr; Agitation</div>
-    <p class="zone-desc" style="margin-top: 0.5rem;">A remix of Porter&rsquo;s Productivity Frontier. We replace cost and efficiency with well-being. The question: how do communities use their flow of assets&mdash;and how do restrictions shape their capacity to thrive?</p>
+    <p class="zone-desc" style="margin-top: 0.5rem;">The four movements describe how Literary Science operates. The Frontier is its chief measurement tool&mdash;mapping where a community sits and what it would take to move.</p>
   </div>
   <span class="zone-arrow" style="margin-top: 0; font-size: 1.2rem;">&rarr;</span>
 </a>
@@ -680,9 +680,42 @@
   </div>
 </div>
 
+<!-- Hidden Netlify form for bot detection -->
+<form name="homepage-signup" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="source" value="homepage">
+</form>
+
+<div class="signup-strip light reveal">
+  <div class="signup-inner">
+    <div class="signup-label">Stay Close<br>LS&ndash;Community</div>
+    <div class="signup-content">
+      <h2>Join the Literary Science community.</h2>
+      <p>New tools, studio pieces, and methodology updates. Sent when there&rsquo;s something worth reading. Nothing else.</p>
+      <form class="signup-form" id="homepageSignup" onsubmit="submitSignup(event, 'homepage-signup', this)">
+        <input type="hidden" name="form-name" value="homepage-signup">
+        <input type="hidden" name="bot-field">
+        <input type="hidden" name="source" value="homepage">
+        <div class="signup-field">
+          <label for="hp-name">Name</label>
+          <input type="text" id="hp-name" name="name" placeholder="Your name" required class="signup-input">
+        </div>
+        <div class="signup-field">
+          <label for="hp-email">Email</label>
+          <input type="email" id="hp-email" name="email" placeholder="Email address" required class="signup-input">
+        </div>
+        <button type="submit" class="signup-btn">Join &rarr;</button>
+      </form>
+      <div class="signup-success" id="homepageSuccess">You&rsquo;re in. Welcome to the community.</div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-left">Literary Science</div>
-  <div class="footer-right">A property of Asoluka LLC &nbsp;&mdash;&nbsp; <a href="/workshops/">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
+  <div class="footer-right">A <a href="https://www.newcommpartners.org" style="color: var(--faded);">NewComm Partners</a> property &nbsp;&mdash;&nbsp; <a href="mailto:hello@literaryscience.com">Contact</a> &nbsp;&mdash;&nbsp; &copy; 2026</div>
 </footer>
 
 <script>
@@ -690,6 +723,30 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  async function submitSignup(e, formName, formEl) {
+    e.preventDefault();
+    const btn = formEl.querySelector('.signup-btn');
+    const origText = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const data = new URLSearchParams(new FormData(formEl));
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString()
+      });
+    } catch (err) {}
+
+    formEl.style.display = 'none';
+    const successEl = formEl.parentElement.querySelector('.signup-success');
+    if (successEl) successEl.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = origText;
+  }
 </script>
 </body>
 </html>

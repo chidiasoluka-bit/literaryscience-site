@@ -3,6 +3,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/toolkit-pdfs");
 
   // Custom collection: studio entries sorted by date descending
   eleventyConfig.addCollection("studio", function(collectionApi) {
@@ -11,11 +12,13 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  // Custom collection: toolkit items sorted by order
+  // Custom collection: toolkit items sorted by order (excludes hidden items)
   eleventyConfig.addCollection("toolkit", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/toolkit/*.md").sort((a, b) => {
-      return (a.data.order || 0) - (b.data.order || 0);
-    });
+    return collectionApi.getFilteredByGlob("src/toolkit/*.md")
+      .filter(item => !item.data.eleventyExcludeFromCollections)
+      .sort((a, b) => {
+        return (a.data.order || 0) - (b.data.order || 0);
+      });
   });
 
   // Date filter for display
